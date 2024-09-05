@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=fallback');
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+/* Additional styles */
+@import 'additional-styles/utility-patterns.css';
+@import 'additional-styles/flatpickr.css';
+
+@import 'tailwindcss/utilities';
+
+body {
+  @apply font-facebook text-base
+  /* @apply font-sans text-base */
+}
+
+@layer utilities {
+  .tiptap p.is-editor-empty:first-child::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+  
+  .icon-side-bar {
+    @apply text-white p-2 bg-[#F27125] font-bold rounded-full hover:bg-[rgb(249,216,138)] cursor-pointer
+  }
+  .icon-text-side-bar {
+    @apply text-xs hidden lg:block sp
+  }
+  .cs-badge-circle {
+    @apply text-xs text-center rounded-full px-1;
+  }
+  
+  .custom-gradient {
+    background: linear-gradient(
+      to right,
+      #124DA3 1%,
+      #F37022 30%,
+      #F37022 70%,
+      #4EB748 99%
+    );
+  }
+  .custom-border-gradient {
+    border-image: linear-gradient(to right,#124DA3 20%,
+    #F37022 40%,
+    #F37022 60%,
+    #4EB748 80%);
+    border-image-slice: 1;
+    border-radius: 50%
+  }
+
+  .scrollbar-none-track::-webkit-scrollbar {
+    width: 5px;
+    height: 15px;
+  }
+  .scrollbar-none-track{
+    scrollbar-gutter: auto | stable && both-edges?
+  }
+  .scrollbar-none-track::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 100vh;
+    border: 1px solid transparent;
+  }
+  .scrollbar-none-track:hover::-webkit-scrollbar-thumb{
+    background: rgb(242,113,36);
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+  .img-bg {
+    background-image: url('./src/assets/img/alphabuilding.jpg'),
+      linear-gradient(to right,rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+      url('./src/assets/img/alphabuilding.jpg');
+    background-size: contain, cover, cover;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: center, center, center;
+  }
+
+  .img-bg2 {
+    background-image: linear-gradient(to right,rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),url('./src/assets/img/alphabuilding_long.jpg');
+    background-size: cover, cover;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+  }
+  
+  .circle {
+    @apply bg-fbWhite h-8 w-8 flex justify-center items-center rounded-[50%] z-[1] 
+  }
+  .active {
+    @apply border-gray-500 text-white bg-green-700 my-4 
+  }
+}
+

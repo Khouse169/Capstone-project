@@ -1,0 +1,11460 @@
+﻿
+
+Đây là một đề tài khó thực hiện trong vòng 4 tháng, độ khó của nó là 9/10 nên điểm đánh giá của đồ án này là 8.5/10 hoặc cao hơn
+FPT UNIVERSITY
+ Capstone Project Document 
+FPT University Société Place
+SEP490_G3
+Group Members
+Nguyễn Khải Hoàn - HE161601
+Nguyễn Anh Quân - HE164025
+Lê Hải Hoàn - HE161140
+Bùi Quốc Anh - HE163864
+Nguyễn Hồng Sơn - HE164042
+Supervisor
+Nguyễn Cường Mạnh
+Capstone Project code
+ FUSP
+- Hanoi, August/2024 -
+
+Table of Contents
+
+Contents
+Acknowledgement	5
+Definition and Acronyms	5
+I. Project Introduction	7
+1. Overview	7
+1.1 Project Information	7
+1.2 Project Team	7
+2. Product Background	7
+3. Existing Systems	8
+3.1 Workplace(Meta)	8
+3.2 FE forum (FPTU's forum)	9
+3.3. NEU Alumni	10
+4. Business Opportunity	11
+5. Software Product Vision	11
+6. Project Scope & Limitations	12
+6.1 Major Features	12
+6.2 Limitations & Exclusions	12
+II. Project Management Plan	14
+1. Overview	14
+1.1 Scope & Estimation	14
+1.2 Project Objectives	18
+1.3 Project Risks	18
+2. Management Approach	19
+2.1 Project Process	19
+2.3 Training Plan	19
+3. Project Deliverables	20
+4. Responsibility Assignments	20
+5. Project Communications	21
+6. Configuration Management	22
+6.1 Tools & Infrastructures	22
+6.2 Document Management	22
+6.3 Source Code Management	22
+III. Software Requirement Specification	23
+1. Product Overview	23
+2. User Requirements	25
+2.1 Actors	25
+2.2 Use Cases	26
+3. Functional Requirements	113
+3.1 System Functional Overview	113
+4. Non-Functional Requirements	128
+4.1 Usability	128
+4.2 Security	128
+4.2 Performance	128
+4.3 Maintaining & Scalability	128
+4.4 Mockup	128
+5. Requirement Appendix	133
+5.1 Application Messages List	133
+IV. Software Design Description	137
+1. System Design	137
+1.1 System Architecture	137
+1.2 Package Diagram	149
+2. Database Design	151
+2.1 Operational Database Design	151
+2.2 Table Description	152
+3. Detailed Design	196
+3.1 Class Diagram	196
+3.2  Sequence Diagram	204
+V. Software Testing Documentation	279
+1. Scope of Testing	279
+1.1. Testing Objective	279
+1.2. Testing Scope	279
+2. Test Strategy	279
+2.1 Testing Types	280
+2.2 Test Levels	280
+2.3 Supporting Tools	281
+3. Test Plan	281
+3.1 Human Resources	281
+3.2 Test Environment	281
+3.3 Test Milestones	282
+4. Test Cases	282
+5. Test Reports	283
+5.1 Unit Test	283
+5.2 Integration Test	283
+5.3 System Test	284
+5.4 SecurityTest	285
+VI. Release Package & User Guides	289
+1. Deliverable Package1. Deliverable Package	289
+2. Installation Guides	290
+2.1 System Requirements	290
+2.2 Installation Instruction	291
+3. User Manual	324
+3.1 Authentication	324
+3.2 My Profile	326
+3.3 Posting function	333
+3.4 Manage group	341
+3.5 Homepage	352
+3.6 Report	361
+3.7 Admin	365
+
+
+
+Acknowledgement
+
+       We would like to express our deep gratitude to Mr.Nguyen Cuong Manh, our supervisor, for his patient guidance, enthusiastic encouragement and useful critiques of this project. Under the instructions of Mr. Manh, the project team has always felt comfortable and confident.
+Besides, Mr. Manh shared with us the philosophy of keeping the right attitude towards problems.
+We believe that was the most important factor that lead to the success of this project.
+       We would also like to extend our thanks to the instructors at FPT University for all the classes. We hope you will find this project a reflection of the knowledge and experiences you have given us during this period of studying years.
+       Finally, we wish to thank our parents for their support and encouragement throughout our studies
+
+Definition and Acronyms 
+
+Acronym
+Definition
+PWM
+Psychology website 
+AWS
+Amazon Web Services
+BA
+Business Analysis
+BR
+Business Rule
+ERD
+Entity Relationship Diagram
+GUI
+Graphical User Interface
+PM
+Project Manager
+SDD
+Software Design Description
+SPMP
+Software Project Management Plan
+SRS
+Software Requirement Specification
+UAT
+User Acceptance Test
+UC
+Use Case
+API
+Application Program Interface
+EC
+Exceptions
+AF
+Alternative Flows
+TG
+Trigger
+
+I. Project Introduction
+1. Overview
+1.1 Project Information
+• Project name: FPT University Société Place
+• Project code: FUSP
+• Group name: SEP490_G3
+• Software type: Web Application
+1.2 Project Team
+Supervisor
+Full Name
+Role
+Email
+  Mobile
+ Nguyễn Cường Mạnh
+Supervisor
+ ManhNC5@fe.edu.vn
+ 
+Project team
+Full Name
+Role
+Email
+  Mobile
+Nguyễn Khải Hoàn
+Leader
+hoannkhe161601@fpt.edu.vn
+0967861413
+Bùi Quốc Anh
+Member
+anhbqhe163864@fpt.edu.vn
+0582270720
+ Nguyễn Anh Quân
+ Member
+quannahe164025@fpt.edu.vn
+0584133134
+ Nguyễn Hồng Sơn
+ Member
+sonnhhe164042@fpt.edu.vn
+0367447542
+ Lê Hải Hoàn
+ Member
+hoanlhhe161140@fpt.edu.vn
+0379357029
+Stakeholders
+Full Name
+Department
+Email
+  Mobile
+Phan Bảo Châu
+Director - Brand Development
+chaupb2@fe.edu.vn
+
+Bùi Văn Phát
+ IT Manager - FE
+phatbv@fe.edu.vn
+
+Hoang Phuong Thao 
+ Manager -  Brand Development
+thaohp20@fe.edu.vn
+0866923864
+
+
+
+
+2. Product Background
+Currently, digital platforms like X, Facebook, Instagram, Threads,... exploit user information without permission for advertising and illegally trade personal user data. These actions violate Decree 13/2023/NĐ-CP on Personal Data Protection in Vietnam, as well as the General Data Protection Regulation (GDPR) in Europe regarding cross-border data transfer.
+Therefore, we aim to build an internal platform to connect current students, alumni, faculty, and staff through FPTU's internal application systems. This platform will facilitate the connection of students from different campuses, enhancing the sharing of knowledge across FPTU campuses.
+FPT University Société place is a dynamic platform designed to foster a connected and collaborative community among its staff and students. This innovative website allows users to create profiles, connect with peers, and share a wide range of content, from personal updates to academic articles and professional insights. By facilitating the exchange of ideas and information, the platform aims to enhance communication, support academic and professional development, and build a vibrant, engaged university community. Whether it's faculty sharing research findings, students discussing projects, or staff announcing events, the site serves as a central hub for the diverse voices of FPT University, promoting a culture of learning, innovation, and mutual support.
+
+To encourage and increase interaction on this platform, we hope that FPTU will implement a process or organize events that incentivize students to write articles with monetary rewards (approved by FPTU PR internal). This will enhance the quality and expertise of the content, including articles on professional topics, technical skills, communication, and creative start-up ideas.
+
+3. Existing Systems
+
+3.1 Workplace(Meta)
+
+
+
+
+The all-in-one business communication platform from Meta that securely combines chat, video, groups and your intranet with the work tools you already use. Think Facebook, but for company.
+Link:Workplace
+Main Feature: 
+● Communication Tools
+● Integration and Compatibility
+● Collaboration Features
+
+Advantages
+Disadvantages
+● It's familiar
+
+● It's mobile
+
+● It's integrated
+
+● It's safe
+● High price (From $4 to $8 per person/month)
+
+3.2 FE forum (FPTU's forum)
+
+
+
+FE forum is an internal forum of FPT Education Group. Those who have @fpt.edu.vn, @fsb.edu.vn or @arena.edu.vn email accounts automatically become its members. Once the email account is removed, the forum membership will be dismissed. (Students cannot access this forum, despite having one of those email accounts.)
+Link:  FE forum
+Main Feature: 
+● Communication Tools
+● Announcement Tools
+
+Advantages
+Disadvantages
+● Easy to operate for users 
+●	UI,UX are not good for users.
+
+●	System performance is low.
+
+●	Features are not enough.
+
+        ●     All FPT educational institutions participate in the system.
+
+         ●     Only for staff, students do not have access rights
+
+
+3.3. NEU Alumni
+
+
+
+NEU Alumni is a forum network for NEU alumni to connect them with the school as well as a place for them to share knowledge and experiences with current generations of students.
+Link: NEU Alumni
+Main Feature: 
+● Communication Tools
+● Announcement Tools
+
+Advantages
+Disadvantages
+● Easy to operate for users 
+●	UI,UX are not good for users.
+
+●	Features are not enough.
+
+●	Last posting in forum was 5 years ago.
+
+4. Business Opportunity
+The FPT University Société presents a significant business opportunity by addressing the evolving communication needs of academic institutions. By offering a centralised platform for students and staff to connect, share articles, and collaborate, the website can enhance the university's internal communication infrastructure, making it more efficient and engaging. This platform can be expanded to include features like virtual study groups, professional networking opportunities, and academic resource sharing, creating a comprehensive digital ecosystem. Additionally, the website can serve as a model for other educational institutions seeking similar solutions, opening avenues for partnerships and licensing. With the increasing emphasis on digital transformation in education, this platform positions FPT University as a leader in innovative campus communication, potentially attracting more students and staff who value a connected and supportive academic environment.
+5. Software Product Vision
+Our vision for The FPT University Société website is to create a vibrant, interactive, and secure digital community that revolutionises the way students and staff connect, communicate, and collaborate. We aim to build a platform that not only enhances academic and professional interactions but also fosters a sense of belonging and engagement within the university. By integrating advanced features such as real-time messaging, personalised content feeds, and collaborative tools, we aspire to support a dynamic exchange of knowledge and ideas. Our ultimate goal is to empower every member of the FPT University community with seamless access to information, resources, and networking opportunities, driving innovation and excellence in education.
+With this system, we propose incorporating the following features:
+● Near/Real-Time Messaging and Notifications.
+● Event Management.
+● Enables open integration via API.
+● Academic Resource Sharing.
+● Discuss groups of majors, classes and fields.
+● User-Friendly Operations.
+● Workflow review, approval reports (post)
+● Security and Privacy Controls.
+
+6. Project Scope & Limitations
+6.1 Major Features
+ID
+Features & Description
+FE-01
+Authentication
+FE-02
+Roles and grant permission management
+FE-03
+Real-time message/notification
+FE-04
+Real-time react/comment post
+FE-05
+Create member group
+FE-06
+Manage member/post/content
+FE-07
+Smart suggestion/search/hashtag
+FE-08
+Suggested posts with related information such as: campus, major, semester, subjects, classes, topics,...
+FE-09
+Suggest making friends and groups with related information such as majors, classes, common friends, topics of common interest,...
+
+6.2 Limitations & Exclusions
+ID
+Description
+LI-01
+Difficulty in connecting and communicating with stakeholders
+LI-02
+Short time to complete project
+LI-03
+Apply new tech/tool for proceeding project 
+LI-04
+Lack of experience in implementing requirements/functionality analysis and retrieval
+
+
+
+II. Project Management Plan
+1. Overview
+1.1 Scope & Estimation
+Scope:
+● The project must be completed in August 2024.
+● Only used within FPT University.
+● Develop a comprehensive platform for student interaction including personalized profiles, study groups, messaging, and content management.
+● Enhance the quality of educational content and streamline communication among students and staff.
+Estimation:
+This section provides a structured view of a project's scope, breaking it down into manageable Work Breakdown Structure (WBS) items. Each WBS item represents a specific task or User Story within the project. Complexity levels (simple, medium, complex) and the estimated effort in man-days are assigned to these items.
+
+#
+WBS Item
+Headcount
+Complexity
+Est. Effort
+(man-days)
+1
+Project Initiation: 06/05/2024 - 08/05/2024
+
+2.5
+1.1
+Project Ideation
+
+
+
+1.1.1
+Kick-off meeting & state common goals
+5
+Simple
+0.5
+1.1.2
+Meeting to define project scope
+5
+Complex
+2
+2
+Project Planning: 09/05/2024 - 15/05/2024
+
+
+5
+2.1
+Prepare Project Management Plan	
+2
+Complex
+3
+2.2
+Define function and non-functional requirements
+5
+Medium
+2
+3
+Iteration 1: 16/05/2024 - 30/05/2024
+
+
+45
+3.1
+Documents
+
+
+      17
+3.1.1
+Report 2: Project Management Plan
+5
+Complex
+10
+3.1.2
+Prepare Report 3: Software Requirement Specification
+2
+Medium
+7
+3.2
+Design
+
+
+17
+3.2.1
+Draw UCD
+3
+Medium
+4
+3.2.2
+Draw context diagram
+1
+Simple
+1
+3.2.3
+Draw ERD
+2
+Medium
+4
+3.2.4
+Design Prototypes
+2
+Complex
+8
+3.3
+Coding
+
+
+4
+3.3.1
+Build base source code and code front-end
+2
+ Medium
+4
+3.4
+Test
+
+
+6
+3.4.1
+Design Test Plan
+2
+Medium
+6
+3.5
+Iteration Retrospective
+
+
+1
+4
+Iteration 2: 31/05/2024 - 14/06/2024
+
+
+44
+4.1
+Documents
+
+
+17
+4.1.1
+Update requirements for SRS Document
+5
+Simple
+5
+4.1.2
+Implement overall system design
+3
+Medium
+6
+4.1.3
+Prepare Unit Test Report
+1
+Simple
+4
+4.1.4
+Prepare SDS Document
+5
+Simple
+2
+4.2
+Design
+
+
+6
+4.2.1
+Design Database
+2
+Medium
+6
+4.3
+Coding
+
+
+12
+4.3.1
+Build base source code for back-end
+3
+Complex 
+12
+4.4
+Testing
+
+
+8
+4.4.1
+Write UAT test cases
+5
+Simple
+8
+4.5
+Iteration Review and Planning
+
+
+1
+5
+Iteration 3: 15/06/2024 - 29/06/2024
+
+
+72
+5.1
+Documents
+
+
+10-
+5.1.1
+Update requirements for SRS Documents
+5
+Simple
+5
+5.1.2
+Update SDS Document
+5
+Simple
+5
+5.2
+Design
+10
+5.2.1
+Draw package diagrams
+2
+Simple
+6
+5.2.2
+Define Screen flow
+2
+Simple
+2
+5.2.3
+Update database design
+1
+Simple
+2
+5.3
+Coding
+40
+5.3.1
+Implement 11 use cases (function in Home Screen)
+5
+Medium
+40
+5.4
+Testing
+11
+5.4.1
+Write UT test cases
+1
+Simple
+2
+5.4.2
+Write IT test cases
+1
+Simple
+2
+5.4.3
+Execute UT
+5
+Simple
+5
+5.4.4
+Execute IT
+1
+Medium
+2
+5.5
+Iteration Review and Planning
+1
+6
+Iteration 4: 30/06/2024 - 14/07/2024
+71
+6.1
+Requirements & Design
+10
+6.1.1
+Update requirements for SRS Documents
+5
+Simple
+5
+6.1.2
+Update SDS Document
+5
+Simple
+5
+6.2 
+Coding
+40
+6.2.1
+Implement 13 use cases (function in Home Screen)
+5
+Medium
+30
+6.3
+Testing
+20
+6.3.1
+Implement Usability Testing
+2
+Simple
+3
+6.3.2
+Update UT report
+2
+Simple
+3
+6.3.3
+Write UT test cases
+2
+Simple
+3
+6.3.4
+Write IT test cases
+2
+Simple
+3
+6.3.5
+Execute UT
+5
+Simple
+5
+6.3.6
+Execute IT
+2
+Medium
+3
+6.4 
+Iteration Review & Planning
+1
+7
+Iteration 5: 15/07/2024 - 29/07/2024
+71
+7.1
+Requirements & Design
+10
+7.1.1
+Update requirements for SRS Documents
+5
+Simple
+5
+7.1.2
+Update SDS Document
+5
+Simple
+5
+7.2 
+Coding
+45
+7.2.1
+Implement Group screen
+5
+Medium
+45
+7.3
+Testing
+15
+7.3.1
+Implement Usability Testing
+2
+Simple
+2
+7.3.2
+Update UT report
+2
+Simple
+2
+7.3.3
+Write UT test cases
+1
+Simple
+2
+7.3.4
+Write IT test cases
+1
+Simple
+2
+7.3.5
+Execute UT
+5
+Simple
+5
+7.3.6
+Execute IT
+1
+Medium
+2
+7.4 
+Iteration Review & Planning
+1
+8
+Iteration 6: 30/07/2024 - 13/08/2024
+61
+8.1
+Requirements & Design
+20
+8.1.1
+Finish requirements for SRS Documents
+5
+Simple
+5
+8.1.2
+Finish SDS Document
+5
+Simple
+5
+8.1.3
+Design Production Server
+2
+Complex
+10
+8.2 
+Coding
+25
+8.2.1
+Implement function Message and Share file
+5
+Medium
+15
+8.2.2
+Setup Production Server
+2
+Complex
+8
+8.2.3
+Deploy Code of Iter 5, Iter 6 to server
+1
+Medium
+2
+8.3
+Testing
+15
+8.3.1
+Complete UT report 
+2
+Simple
+2
+8.3.2
+Complete IT report version 1
+1
+Simple
+1
+8.3.3
+Update ST test cases (web)
+2
+Simple
+4
+8.3.4
+Execute UT
+5
+Simple
+2
+8.3.5
+Execute IT
+1
+Simple
+2
+8.3.6
+Execute ST
+2
+Simple
+4
+8.4
+Iteration Retrospective
+1
+9
+Iteration 7: 14/08/2024 - 20/08/2024
+29
+9.1
+Requirements & Design
+10
+9.1.1
+Prepare for final Presentation
+5
+Simple
+5
+9.1.2
+Finish & review UT, IT, ST, UAT documents
+5
+Simple
+5
+9.2 
+Coding
+10
+9.2.1
+Deploy Code of Iter 7, Iter 8 to server
+1
+Medium
+5
+9.2.2
+Fix web app bugs
+2
+Simple
+5
+9.3
+Testing
+8
+9.3.1
+Execute IT
+1
+Simple
+2
+9.3.2
+Execute ST
+1
+Simple
+2
+9.3.3
+Execute UAT
+1
+Simple
+4
+9.4
+Iteration Retrospective
+1
+10
+Project Closing
+10
+10.1
+Closing Stage
+10
+10.1.1
+Prepare and rehearse for capstone presentation
+5
+Medium
+10
+Total Estimated Effort (man-days)
+410,5
+1.2 Project Objectives
+
+Objectives:
+● No critical issues impacting key functionalities.
+● Complete all project-related reports.
+● Ensure all deliverables are reviewed and approved by the committee
+#
+Testing Stage
+Test Coverage
+No. of Defects
+% of Defect
+Notes
+1
+Reviewing
+100%
+20
+10%
+ 
+2
+Unit Test
+90%
+30
+15%
+
+3
+Integration Test
+95%
+25
+12%
+
+4
+System Test
+100%
+35
+15%
+
+5
+Acceptance Test
+100%
+10
+5%
+
+1.3 Project Risks
+#
+Risk Description
+Impact
+Possibility
+ Response Plans
+1
+Alterations to Initial Project Requirements
+High
+High
+ Reallocate resources to accommodate changes without compromising the timeline.
+2
+Delayed Response Times	
+High
+High
+Establish structured communication protocols and regular check-ins.
+3
+Inadequate Risk Management	
+High
+Medium
+Proactively identify potential risks and develop mitigation strategies.
+4
+High requirements for information security
+High
+High
+Work closely with security teams to address and mitigate security risks.
+5
+Constraints with External Tool Availability
+High
+Medium
+Integrate alternative tools that are cost-effective and meet project needs.
+6
+Misunderstandings Among Team Members
+Medium
+Low
+Ensure clear communication and detailed explanations.
+2. Management Approach
+2.1 Project Process
+
+Methodology: Iterative and Incremental Development
+Development is divided into multiple iterations, each delivering a functional product increment.
+Each iteration includes requirements gathering, design, development, testing, and deployment.
+
+2.2 Quality Management
+
+Approach Name
+Detail
+Quality Objectives
+Use case review
+Discuss with members to identify inappropriate use cases	
+Ensure logical implementation without redundant use cases.
+UI review
+Prototype and review UI before client-side development
+Ensure UI is visually appealing, clean, and consistent.
+Unit test
+Execute test for all functions
+High code coverage, catch errors early, provide documentation for the codebase.
+Integration test
+Test feature flows and interactions between components	
+Ensure correct data flow, manage dependencies, handle errors during integration.
+System test
+Test complete system across different environments and devices
+Ensure system functionality, compatibility, and performance across various platforms.
+Acceptance Test
+Final user tests before release	
+Verify functional and non-functional requirements, user interface, security, and interoperability.
+2.3 Training Plan
+Training Area
+Participants
+When, Duration
+Waiver Criteria
+Iterative and incremental methodology
+All members
+Start: 20/05/2024
+Mandatory 
+Technology Stack (Frontend & Backend)
+All members
+Start: 01/06/2024
+Mandatory
+Testing
+All members
+Start: 12/06/2024
+Mandatory
+3. Project Deliverables
+#
+Deliverable
+Due Date
+Notes
+1
+Project Planning
+20/05/2024
+Project Management Plan Document
+2
+Database
+30/05/2024
+Database design
+2
+Iteration 1 
+31/05/2024
+Project Management Plant
+3
+Iteration 2
+15/06/2024
+Software Requirements Specification Document
+4
+SRS + Design + Code Iteration 3
+30/06/2024
+Software Requirements Specification Document, Architecture Design, Detailed Design
+5
+SRS + Design + Code Iteration 4
+15/07/2024
+Software Requirements Specification Document, Architecture Design, Detailed Design, Code & Unit test, Integration test, System test cases
+6
+SRS + Design + Code Iteration 5
+30/07/2024
+Software Requirements Specification Document, Architecture Design, Detailed Design, Code & Unit test, Integration test, System test cases
+7
+SRS + Design + Code Iteration 6
+14/08/2024 
+Software Requirements Specification Document, Architecture Design, Detailed Design, Code & Unit test, Integration test, System test cases
+8
+SRS + Design + Code Iteration 7
+21/08/2024
+Software Requirements Specification Document, Architecture Design, Detailed Design, Code & Unit test, Integration test, System test cases
+9
+Complete report
+23/08/2024
+Source codes, System test reports, Acceptant test reports
+4. Responsibility Assignments
+D~Do; R~Review; S~Support; I~Informed; <blank>- Omitted
+Responsibility
+HoanNK
+AnhBQ
+HoanLH
+QuanNA
+SonNH
+Report 1 - Project Introduction
+R,S
+D,R
+S
+S
+S
+Report 2 - Project Management Plan
+D,R
+R,S
+S
+S
+S
+Report 3 - Software Requirement Specification
+R,S
+D,R
+S
+S
+S
+Report 3 - Project Tracking
+R,S
+D,R
+S
+R,S
+S
+Design Mockup & Prototype
+R,S
+S
+D,S
+S
+S
+Report 4 -  Software Design Document
+R,S
+D,R
+S
+S
+S
+Develop Iteration 1
+R,S
+R,S
+S
+D,R
+S
+Report 5 - Software Test Documentation
+R,S
+D,R
+S
+S
+S
+Report 5 - Test Report
+R,S
+D,R
+S
+S
+S
+Report 5 - Unit Test
+R,S
+D,R
+S
+S
+S
+Develop Iteration 2
+R,S
+R,S
+S
+D,R
+S
+Develop Iteration 3
+R,S
+R,S
+S
+D,R
+S
+Update Report 1
+R,S
+D,R
+I
+I
+I
+Update Report 2
+R,S
+D,R
+I
+I
+I
+Update Report 3
+R,S
+D,R
+I
+I
+I
+Update Report 4
+R,S
+D,R
+I
+I
+I
+Update Report 5
+R,S
+D,R
+I
+I
+I
+Report 6 - User Guide
+R,S
+D,R
+S
+S
+S
+Create UAT plan
+D,S
+R,S
+R,S
+R,S
+R,S
+Execute UAT
+D,S
+R,S
+S
+S
+S
+Report 7 - Final Project Report
+R,S
+D,R
+R,S
+R,S
+R,S
+
+5. Project Communications
+
+Communication Item
+Who/ Target
+Purpose
+When, Frequency
+Type, Tool, Method(s)
+Weekly Meeting
+Supervisor & Capstone team  
+Report the project progress the past week
+Discuss all the problems and issues met 
+Once per week
+Online via Google Meet, Offline
+Daily Meeting
+All members
+Announce work to do
+Discuss about problems and tasks
+Distribute tasks
+Everyday
+Online via Google Meet
+Emergency Meeting
+All members
+Find and brainstorm ideas to resolve urgent problems and issues
+To be Announced
+Online via Google Meet
+6. Configuration Management
+6.1 Tools & Infrastructures
+
+Category
+Tools / Infrastructure
+Technology
+ReactJS (FrontEnd), .NET (BackEnd)
+Database
+SQL Server 2022
+IDEs/Editors
+Visual Studio Code, Microsoft Visual Studio, SSMS 19
+API
+Postman, Swagger
+Diagramming
+Draw.io
+Documentation
+Ms Office, Google Docs/Sheets, Canva(Slides)
+Communication
+Facebook Messenger, Email, Google Meet, Zalo
+Version Control
+GitLab (Source Codes), Google Drive (Documents)
+Deployment server
+Docker (Dev, Test server environment IT FE)
+Project management
+Jira, GitLab (Tasks, Defects)
+6.2 Document Management
+❖ Project documents are archived on Google Shared Drives with this structure:
+● Root (URL: Root_Link)
+○ SEP490_G3
+■ Report
+         Report_Test
+■ Biên bản họp
+■ Guide làm việc
+■ Bug_Report
+■ Tài liệu sample
+6.3 Source Code Management
+❖ Source Code is managed with this structure:
+➢ Schedule will be updated instantly when changes are made.
+➢ Development team uses the Gitlab repository to archive source code and Git to control versions.
+➢ Using JIRA, Google Sheet to resolve bugs and issues throughout the entire software development process.
+➢ Developers have to run the unit test completely before push to remote repository and create merge requests.
+
+
+III. Software Requirement Specification
+1. Product Overview
+1.1 Product Overview
+The FPT University Association addresses the growing communication needs of academic institutions. By providing a centralised platform for students and staff to connect, share articles and collaborate, the website can enhance a university's internal communications infrastructure, making it efficient and effective. more attractive. The platform can be expanded to include features such as virtual study groups, professional networking opportunities, and academic resource sharing, creating a comprehensive digital ecosystem. Additionally, the site can serve as a model for other educational institutions looking for similar solutions, opening up avenues for collaboration and licensing. With an increasing emphasis on digital transformation in education, this platform helps FPT University become a leader in innovative communication on campus, capable of attracting more students and staff. values a connected and supportive academic environment.
+       
+Figure 3.1. FPT University Société place context diagram
+URL: ContextDiagram_Link
+
+
+
+2. User Requirements
+2.1 Actors
+
+Figure 3.2. Generalization
+#
+Actor
+Description
+1
+User
+All person at  FPT universities who can login with SSO FPTU, SSO FEID
+2
+Member
+Student and lecture at  FPT universities who can login with SSO FPTU, SSO FEID
+3
+Admin
+Person who has permission to view the system dashboard, manage user, manage all group
+4
+Group Manager
+Person who has permission to manage a group
+
+2.2 Use Cases
+2.2.1 Diagram(s)
+
+Figure 3.2.1. User use case diagram (52 use case)
+
+Figure 3.2.2. Member use case diagram (48 use case)
+
+
+
+
+Figure 3.2.3. Group Manager use case diagram (51 use case)
+
+
+Figure 3.2.4. Admin use case diagram 
+
+2.2.2 Descriptions
+
+
+ID
+Use Case
+Actors
+Use Case Description
+UC1   	 
+Login
+Member,
+Group Manager
+Login into the FUSP system with an SSO FPT account
+UC2
+FirstTimeLogin
+Member,
+Group Manager
+The first login into the FUSP system with an SSO FPT account
+UC3	 
+Logout
+Member,
+Group Manager
+Logout from the FUSP system
+UC4   	 
+View Personal Profile
+Member,
+Group Manager
+The actor views their personal profile details in the FUSP system
+UC5 
+Add Personal Profile
+Member,
+Group Manager
+The actor adds information profile into the FUSP system
+UC6 	 
+Update Personal Profile
+Member,
+Group Manager
+The actor updates their personal information in the profile
+UC7	 
+Delete Personal Profile
+Member,
+Group Manager
+The actor delete  their personal information in the profile
+UC8	 
+Active Personal Profile
+Member,
+Group Manager
+The actor activates their personal profile to make it accessible
+UC9 
+Inactive Personal Profile
+Member,
+Group Manager
+The actor marks a personal profile as inactive
+UC10 
+View List Friend
+Member,
+Group Manager
+The actor views a list of friends they have connected with on the platform
+UC11
+View List Videos
+Member,
+Group Manager
+The actor views a list of albums they have created or organized on the platform
+UC12	 
+View List of  Photos
+Member,
+Group Manager
+The actor views a list of albums they have created or organized on the platform
+UC13	 
+View Personal  Post
+Member,
+Group Manager
+The actor views a list of their own posts, such as articles, photos, or status updates
+UC14	 
+View posts on wall
+Member,
+Group Manager
+The agent views a dynamic feed of posts, such as text, image, or video updates, sorted by a recommendation algorithm. (prioritises posts marked as important by the FPTU)
+UC15	 
+Search on list friend
+ Member,
+ Group Manager
+Search on list friend and show list friend with keyword
+UC16
+Filter on list friend
+ Member,
+ Group Manager
+Filter your friends list with the available options
+UC17
+List all notifications of actor
+ Member,
+ Group Manager
+List all notifications of actor
+UC18
+Click On Notify To Redirect Page
+ Member,
+ Group Manager
+Redirect to the corresponding page and mark it to readed
+UC19
+Accept friend request
+ Member,
+ Group Manager
+Actors agree to become friends with friend requests
+UC20
+Manage Post
+ Member,
+ Group Manager
+Actors can create, update, delete, enable, or disable their posts by selecting the appropriate option from a menu
+UC21
+React Post
+ Member,
+ Group Manager
+Actors can like to posts by selecting a reaction from a set of available reactions
+UC22
+View List Comment Post
+ Member,
+ Group Manager
+Actors can view the comments on a post by clicking on the "Comments" button
+UC23
+Manage Comment Post
+ Member,
+ Group Manager
+Actor can add, update, or delete comments on posts by clicking on the appropriate button
+UC24
+React/Un-React Comment Post
+ Member,
+ Group Manager
+Actor can react to comments on posts by selecting a reaction from a set of available reactions
+UC25
+Reply Comment Post
+ Member,
+ Group Manager
+Actor can reply to comments on posts by clicking on the "Reply" button
+UC26
+Create group
+ Member,
+ Group Manager
+Actor create a group of people with something in common
+UC27
+Invite member
+ Member,
+ Group Manager
+Member invite member to group
+UC28
+View system's dashboard
+ Admin
+Manager view systeam's dashboard
+UC29
+Share Post
+ Member,
+ Group Manager
+Share a post on FUSP
+UC30
+View message list
+ Member,
+ Group Manager
+View the list of messages on FUSP
+UC31
+View a chat conversation
+ Member,
+ Group Manager
+View a specific chat conversation on FUSP
+UC32
+View other people 's profile
+ Member,
+ Group Manager
+View the profile page of another actor on FUSP
+UC33
+Unfriend
+ Member,
+ Group Manager
+Unfriend another actor's profile on FUSP to remove them from the friend list
+UC34
+View a group
+ Member,
+ Group Manager
+View a specific group on FUSP to see its content and interact with members
+UC35
+Join a group
+ Member,
+ Group Manager
+Join a specific group on FUSP to participate in discussions, view content, and interact with other members
+UC36
+Out a group
+ Member,
+ Group Manager
+Leave a specific group on FUSP to stop receiving notifications, access to content, and participation in discussions
+UC37
+Assign role in group
+ Member,
+ Group Manager
+The Group Manager assigns specific roles (e.g., admin, censor, etc.) to a member of the group to manage their permissions and responsibilities within the group
+UC38
+Kick user out of group
+Group Manager
+The actor removes a specific member from the group, revoking their access to the group's content, discussions, and notifications
+UC39
+Set the group setting
+ Group Manager
+The actor modifies various settings of a group using toggle buttons for options like auto-join, auto-approve posts, and making the group public. Changes are applied immediately without requiring further confirmation
+UC40
+View list group request
+ Group Manager
+The actor accesses a list of pending requests from members who have requested to join the group on the FUSP system. The Group Manager can review these requests and take appropriate actions such as approving or rejecting them
+UC41
+Search user
+ Member,
+ Group Manager
+Search for a user on FUSP by their name or username to view their profile or send a friend request
+UC42
+Filter users
+ Member,
+ Group Manager
+Filter users on FUSP to narrow down search results or group members based on certain criteria such as location, interests, or mutual friends
+UC43
+Search all on homepage
+ Member,
+ Group Manager
+Search post, friend or group name on FUSP to find information necessary
+UC44
+Create Post Report
+ Member,
+ Group Manager
+User creates a report about a specific post
+UC45
+Create Comment Report
+ Member,
+ Group Manager
+The user creates a report about a specific comment
+UC46
+Create User Report
+ Member,
+ Group Manager
+The user is creating a report about a specific user
+UC47
+Block User
+ Member,
+ Group Manager
+User blocks another user to prevent them from interacting with him/her
+UC48
+View List User Blocked
+ Member,
+ Group Manager
+Actors view the blocked list which includes users being blocked
+UC49
+Unblock User
+ Member,
+ Group Manager
+Actors unblock users to allow them to interact with them again
+UC50
+Q&A with AI
+ Member,
+ Group Manager
+The user interacts with the AI ​​chatbot to ask a question and get an answer
+UC51
+Suggest friend
+ Member,
+ Group Manager
+The system displays a list of other users that the current user may want to be friends with, based on various criteria such as mutual friends, common interests, etc
+UC52
+Suggest group
+ Member,
+ Group Manager
+The system displays a list of groups that the current user may want to join, based on various criteria such as the user's interests, groups of friends who have joined, etc
+2.2.3 Business Rules
+
+ID
+Rule Definition
+BR-01
+Only people with FPT university accounts can login (Email, FEID)
+BR-02
+The image file upload must be less than 5 MB
+BR-03
+The video file upload must be less than 15 MB
+BR-04
+If user have the first time login to FUSP, user must update all required information before access to system
+BR-05
+When users update all required information and not upload avatar/cover image, default avatar/cover image will show in system
+BR-06
+The post must have content (must have at least 1 character other than a space or at least 1 image)
+BR-07
+If users has made their profile private, you can only view their profile after adding them as friends
+BR-08
+Users cannot share their own posts
+BR-09
+ The content of post must not have sensitive/profanity word
+BR-10
+ The content of comment/reply must not have sensitive/profanity word
+BR-11
+If FUSP system detects sensitive/profanity word, the post will hide and mark yellow
+BR-12
+If FUSP system detects sensitive/profanity word, the comment will hide and mark yellow
+BR-13
+ Users will receive notification when they post/comment with sensitive/profanity word
+BR-14
+Users can change the content of comment which is warned by detection system 
+BR-15
+Users can change the content of post which is warned by detection system 
+BR-16
+If users want to a new friend, user must send request by clicking "Add Friend" button and wait them accept
+BR-17
+Users who receive the friend request, have to receive the notification also
+BR-18
+Users who receive the friend request can click into notification to redirect to profile page of request user or see them in friend request list
+BR-19
+Users who receive the friend request can accept or reject request by click "Accept"/"Delete" button
+BR-20
+Users who send the friend request can revoke the request by pressing the "Cancel Request" button
+BR-21
+Users can set their profile are public or private
+BR-22
+If users set their profile is public, anyone who access to your profile can see all information
+BR-23
+If users set their profile is private, only user an their friend can see information except public posts
+BR-24
+Users can create a post with one or more photos
+BR-25
+If users upload multi photos, the order of the uploaded photos will be the order when you select the uploaded photos in the file explorer
+BR-26
+Users can create a post with one or more videos
+BR-27
+If users upload multi videos, the order of the uploaded videos will be the order when you select the uploaded videos in the file explorer
+BR-28
+Users can create a post with only text, only photos/videos or combine them
+BR-29
+When users create a post with only text, only one video, only one photo, text with a photo or text with a video system create a single post
+BR-30
+When users create a post with 2 or more media file, system will create a parent post combine all of them and child post for each media file
+BR-31
+Users can visit child post by clicking into media file of parent post
+BR-32
+Users can change the image  position of post when image loaded success
+BR-33
+Users can choose other reaction by hold "Like" button
+BR-34
+Users can do all action of child post is same parent post
+BR-35
+Users can see newest notifications when click "Bell" icon
+BR-36
+Users can not spam notifications by spam some action such as reaction button
+BR-37
+Users can get new notification about this spam action by click to notification to mark readed
+BR-38
+ The search results must include user, group, post
+BR-39
+In the search page, we can filter by user, group, post, all, time
+BR-40
+ The share feature have 2 option: profile wall, group
+BR-41
+User can create group profile
+BR-42
+Group admin can assign role, kick user out group
+BR-43
+When group have status is private, only group member can see group post
+BR-44
+When group have status is private, the post can not be share
+BR-45
+When group have status is private, user want to join must be wait for moderator, admin accept
+BR-46
+When group posting have status is censor, user want to post must be wait for moderator
+BR-47
+Group admin/moderator can reject post
+BR-48
+Group admin/moderator can accept post
+BR-49
+Group admin/moderator can reject joint request
+BR-50
+Group admin/moderator can accept joint request
+BR-51
+Members can invite their friend to group
+BR-52
+Users who receive the group invite can accept invite
+BR-53
+Users who receive the group invite can reject invite
+BR-54
+Users can view all invite in group invite list
+BR-55
+Users can search member in group
+BR-56
+Users can friend suggestion in friend suggest list
+BR-57
+Users can block other user
+BR-58
+Users who blocked can not see blocker (post, profile)
+BR-59
+Users can see all account blocked in block list
+BR-60
+Users can unblock users in block list
+BR-61
+Group admin can update group setting
+BR-62
+Group admin can update group information
+BR-63
+Group admin can delete group
+BR-64
+Member can quit out group
+BR-65
+User can view all videos which they uploaded in video section of user profile
+BR-66
+User can view all  photos which they uploaded in photo section of user profile
+BR-67
+User can view all videos in group they joined in video section of user profile
+BR-68
+User can view all photos in group they joined in photo section of user profile
+BR-69
+User can view their list friend
+BR-70
+User can view list friend of other user
+BR-71
+User can update post which they create
+BR-72
+User can update comment which they create
+BR-73
+User can delete post which they create
+BR-74
+User can delete comment which they create
+BR-75
+User can un-react post
+BR-76
+User can un-react comment
+BR-77
+User can report post
+BR-78
+User can report comment
+BR-79
+User can share group post to profile wall if group have status is public
+BR-80
+Users can switch between child posts by clicking on the arrows on both sides
+BR-81
+Users can comment and reply comment with 3 level
+BR-82
+Users can mark notification is readed by click to this notify
+BR-83
+ Users can see number of react of each post
+BR-84
+ Users can see number of comment of each post
+BR-85
+ Users can see number of share of each post
+BR-86
+ Users can chatting with other users by click "Chatting" on their profile or click to chatting  bubble
+BR-87
+ Users can search user to chatting
+BR-88
+ Users can create a group chat
+BR-89
+ Users can add users to group chat
+BR-90
+ User who is blocked can not make a chat
+BR-91
+If users try to access to the resource which they have not permission, they will redirect to error page
+2.2.4 Use Case Specification
+2.2.4.1 Common Feature
+Login
+UC ID and Name
+UC1 - Login
+Created by
+SonNH
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+Member, Admin, Group Manager
+Trigger
+Actors click on the login button.
+Description
+Login into the FUSP system with an SSO FPT account.
+Preconditions
+1. The actor is not logged in or has logged out from the FUSP system.
+2. The actor must be on the welcome page.
+3. The actor must have a valid SSO: FEID account.
+Postconditions
+1. The actor is logged in successfully
+2. The actor is redirected to the homepage
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Clicks on "Login" button on the navigation bar
+ 
+2
+ 
+Displays login screen
+3
+Inputs email and password
+ 
+4
+Passes 2FA with Google Authenticator or Authy
+
+5
+ 
+Redirects to homepage
+Alternative Flows
+N/A
+Exceptions
+EC1
+If actor input wrong email or password
+1. The system displays "Wrong email or password"
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-01
+Other Information
+N/A
+Assumptions
+N/A
+FirstTimeLogin
+UC ID and Name
+UC2 - FirstTimeLogin
+Created by
+SonNH
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+Member, Admin, Group Manager
+Trigger
+Actors click on the login button.
+Description
+The first login into the FUSP system with an SSO FPT account.
+Preconditions
+1. The actor is not logged in or has logged out from the FUSP system.
+2. The actor must be on the welcome page.
+3. The actor must have a valid SSO: FEID account.
+4. The actor never logged in FUSP and fill in the information on the first login screen
+Postconditions
+1. The actor is logged in successfully
+2. The actor filled require information on the first login screen and submit successfully
+3. The actor is redirected to the homepage
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Clicks on "Login" button on the navigation bar
+ 
+2
+ 
+Displays login screen
+3
+Inputs email and password
+ 
+4
+Passes 2FA with Google Authenticator or Authy
+
+5
+
+Redirects to first time login screen
+6
+Fill all required information and submit
+
+7
+ 
+Redirects to homepage
+Alternative Flows
+N/A
+Exceptions
+EC1
+If actor input wrong email or password
+1. The system displays "Wrong email or password"
+EC2
+If actor do not fill all required field
+1. The system displays "This field is required"
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-01, BR-04
+Other Information
+N/A
+Assumptions
+N/A
+
+Logout
+UC ID and Name
+UC3 - Logout
+Created by
+SonNH
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+Member, Admin, Group Manager
+Trigger
+Actors click on the logout button.
+Description
+Log out from the FUSP system.
+Preconditions
+The actor must be logged in to the FUSP
+Postconditions
+1. The actor is logged out successfully.
+2. The actor is redirected to the welcome page.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click on the "Logout" button on the navigation bar.
+ 
+2
+ 
+Displays logout alert.
+3
+Confirms the logout action.
+ 
+4
+
+The system logs the actor out and redirects to the welcome page.
+Alternative Flows
+N/A
+Exceptions
+EC1
+If there is a system error during the logout process
+1. The system displays an error message and remains on the current page.
+Priority
+High
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+
+View Personal Profile
+
+UC ID and Name
+UC4 - View Personal Profile
+Created by
+SonNH
+Date Created
+27/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor clicks on their nickname/avatar.
+Description
+The actor views their personal profile details in the FUSP system.
+Preconditions
+The actor must be logged in to the FUSP.
+Postconditions
+The actor's personal profile information is displayed.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Clicks on the "Profile" button or link on the navigation bar.
+ 
+2
+ 
+Displays the personal profile page with the actor's details.
+Alternative Flows
+N/A
+Exceptions
+EC1
+If there is a system error while retrieving profile information
+1. The system displays an error message and suggests retrying later.
+Priority
+Medium
+Frequency of Use
+Medium
+Business Rules
+ BR-05, BR-07
+Other Information
+N/A
+Assumptions
+N/A
+Add Personal Profile
+
+UC ID and Name
+UC5 - Add Personal Profile
+Created by
+SonNH
+Date Created
+27/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor clicks the "Edit Details" button.
+Description
+The actor adds information profile into the FUSP system.
+Preconditions
+1. The actor must be logged in to the FUSP.
+2. The actor hasn't filled out a form profile.
+Postconditions
+The profile is added into the system.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click on the "Edit Details" button on the navigation bar.
+ 
+2
+ 
+Displays form manage profile.
+3
+Fill information into form and click the "Save" button.
+ 
+4
+
+Validates the input and saves the profile.
+5
+
+Redirected to their newly created profile page.
+Alternative Flows
+AF1
+If the actor provides invalid or incomplete information, the system displays an error message.
+1. The actor corrects the input and resubmits the form.
+AF2
+If the actor decides not to create a profile, they can cancel the process.
+1. The system returns the actor to the previous page.
+Exceptions
+EC1
+If there is a system error during profile creation, the system displays an error message.
+1. The actor can retry or contact support.
+Priority
+High
+Frequency of Use
+Moderate
+Business Rules
+ BR-02, BR-05, BR-07
+Other Information
+N/A
+Assumptions
+N/A
+Update Personal Profile
+UC ID and Name
+UC6 - Update Personal Profile
+Created by
+SonNH
+Date Created
+27/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor clicks the "Edit Details" button.
+Description
+The actor updates their personal information in the profile.
+Preconditions
+1. The actor is logged in to the system.
+2. The actor has navigated to their profile page.
+Postconditions
+1. The actor's personal profile is successfully updated.
+2. The modified details are saved in the system.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Selects the "Edit Details" option from their profile page.
+ 
+2
+ 
+Displays a form with the existing profile information.
+3
+Modifies the relevant fields.
+ 
+4
+Submits the updated form.
+
+5
+
+Validates the input and saves the changes.
+6
+
+Redirected back to their updated profile page.
+Alternative Flows
+AF1
+If the actor decides not to update their profile, they can cancel the process.
+1. The system returns the actor to their profile page without saving any changes.
+AF2
+If the actor provides invalid or incomplete information, the system displays an error message.
+1. The actor corrects the input and resubmits the form.
+Exceptions
+EC1
+If there is a system error during profile update, the system displays an error message.
+1. The actor can retry or contact support.
+Priority
+High
+Frequency of Use
+Moderate
+Business Rules
+ BR-02, BR-07
+Other Information
+N/A
+Assumptions
+N/A
+Delete Personal Profile
+
+UC ID and Name
+UC7 - Delete Personal Profile
+Created by
+SonNH
+Date Created
+27/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor clicks the "Edit Details" button.
+Description
+The actor deletes their personal information and profile.
+Preconditions
+1. The actor is logged in to the system.
+2. The actor has navigated to their profile page.
+Postconditions
+1. The actor's personal profile is successfully deleted.
+2. The actor is logged out of the system.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Selects the "Edit  Details" option from their profile page.
+ 
+2
+ 
+Displays a form with the existing profile information.
+3
+Deletions the relevant fields.
+ 
+4
+Submits the updated form with the "Save" button.
+
+5
+
+Validates the input and saves the changes.
+6
+
+Redirected back to their updated profile page.
+Alternative Flows
+AF1
+If the actor decides not to delete their profile, they can cancel the process.
+1. The system returns the actor to their profile page.
+AF2
+If the actor provides an invalid confirmation (e.g., mistypes), the system displays an error message.
+1. The actor corrects the input and resubmits.
+Exceptions
+EC1
+If there is a system error during profile deletion, the system displays an error message.
+1. The actor can retry or contact support.
+Priority
+High
+Frequency of Use
+Low
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+Active Personal Profile
+
+UC ID and Name
+UC8 - Active Personal Profile
+Created by
+SonNH
+Date Created
+27/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+The actor clicks the "Activate Profile" button.
+Description
+The actor activates their personal profile to make it accessible.
+Preconditions
+1. The actor has created a personal profile.
+2. The profile is currently inactive or pending activation.
+Postconditions
+1. The actor's personal profile is successfully activated.
+2. The actor can now use the profile features.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Logs into the system.
+ 
+2
+ 
+Displays a notification indicating that the profile is inactive.
+3
+Selects the "Activate Profile" option.
+ 
+4
+
+Verifies the actor's credentials and activates the profile
+5
+ Receives a confirmation message.
+
+Alternative Flows
+AF1
+If the actor provides incorrect login credentials, the system displays an error message.
+1. The actor corrects the input and retries.
+Exceptions
+EC1
+If there is a system error during profile activation, the system displays an error message.
+1. The actor can retry or contact support.
+Priority
+Medium
+Frequency of Use
+Low
+Business Rules
+ BR-21, BR-22, BR-24
+Other Information
+N/A
+Assumptions
+N/A
+Inactive Personal Profile
+UC ID and Name
+UC9 - Inactive Personal Profile
+Created by
+SonNH
+Date Created
+27/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+The actor clicks the "Inactive  Profile" button.
+Description
+The actor marks a personal profile as inactive.
+Preconditions
+1. The actor is logged in to the system.
+2. The actor has appropriate permissions.
+Postconditions
+1. The personal profile is flagged as inactive.
+2. The system notifies the actor of the profile status change.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Navigates to the actor profile management section.
+ 
+2
+ 
+Displays a list of profiles.
+3
+Selects the profile to mark as inactive.
+ 
+4
+Click the "Inactive Profile" button.
+
+5
+
+Updates the profile status.
+Alternative Flows
+AF1
+If the actor attempts to mark an already inactive profile, the system informs them.
+AF2
+If the actor changes their mind, they can undo the action within a specified time frame.
+Exceptions
+EC1
+If there is a system error during the process, the manager is notified.
+1. The actor can retry or contact support.
+Priority
+Medium
+Frequency of Use
+Low
+Business Rules
+BR-21, BR-22, BR-24, BR-51
+Other Information
+N/A
+Assumptions
+N/A
+View List Friend
+UC ID and Name
+UC10 - View List Friend
+Created by
+SonNH
+Date Created
+27/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+The actor clicks the "Friend" section.
+Description
+The actor views a list of friends they have connected with on the platform.
+Preconditions
+1. The actor is logged into the system.
+2. The actor has added friends to their network.
+Postconditions
+The actor can see a list of their friends.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Navigates to the "Friends" section.
+ 
+2
+ 
+Retrieves the actor's friend list.
+3
+
+Displays the list of friends, including their names or profile pictures.
+4
+Scroll through the list and view details of each friend.
+
+Alternative Flows
+AF1
+If the actor has not added any friends yet, the system displays a message indicating that the friend list is empty.
+AF2
+The actor can search for specific friends within the list using a search bar.
+Exceptions
+EC1
+If there is a system error while retrieving the friend list, the system displays an error message.
+1. The actor can retry or contact support.
+Priority
+Medium
+Frequency of Use
+High
+Business Rules
+BR-70
+Other Information
+N/A
+Assumptions
+N/A
+View List Videos
+UC ID and Name
+UC11 - View List of  Videos
+Created by
+SonNH
+Date Created
+27/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+The actor clicks the "Video" section.
+Description
+The actor views a list of albums they have created or organized on the platform.
+Preconditions
+1. The actor is logged in to the system.
+2. The actor has created one or more albums.
+Postconditions
+The actor sees a list of their albums.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Navigates to the "Videos" section.
+ 
+2
+ 
+Retrieves the actor's videos list.
+
+
+Displays the list of videos
+4
+Scroll through the list and view details of each album.
+
+Alternative Flows
+AF1
+If the actor has not created any albums yet, the system displays a message indicating that the album list is empty.
+AF2
+The actor can search for specific albums within the list using a search bar.
+Exceptions
+EC1
+If there is a system error while retrieving the album list, the system displays an error message.
+1. The actor can retry or contact support.
+Priority
+Medium
+Frequency of Use
+High
+Business Rules
+BR-65, BR-67
+Other Information
+N/A
+Assumptions
+N/A
+View List of  Photos
+UC ID and Name
+UC12 - View List of  Photos
+Created by
+SonNH
+Date Created
+27/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+The actor clicks the "Photo" section.
+Description
+The actor views a list of albums they have created or organized on the platform.
+Preconditions
+3. The actor is logged in to the system.
+4. The actor has created one or more albums.
+Postconditions
+The actor sees a list of their albums.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Navigates to the "Photos" section.
+ 
+2
+ 
+Retrieves the actor's album list.
+
+
+Displays the list of albums, including their names and cover photos.
+4
+Scroll through the list and view details of each album.
+
+Alternative Flows
+AF1
+If the actor has not created any albums yet, the system displays a message indicating that the album list is empty.
+AF2
+The actor can search for specific albums within the list using a search bar.
+Exceptions
+EC1
+If there is a system error while retrieving the album list, the system displays an error message.
+2. The actor can retry or contact support.
+Priority
+Medium
+Frequency of Use
+High
+Business Rules
+BR-66, BR-68
+Other Information
+N/A
+Assumptions
+N/A
+View Personal  Post
+UC ID and Name
+UC13 - View Personal Post
+Created by
+SonNH
+Date Created
+27/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+The actors click to their nickname to see content they have posted on the platform.
+Description
+The actor views a list of their own posts, such as articles, photos, or status updates.
+Preconditions
+1. The actor is logged in to the system.
+2. The actor has previously posted content.
+Postconditions
+The actor sees list of their own posts.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Navigates to their profile or content management section.
+ 
+2
+ 
+Retrieves the actor's posted content.
+3
+
+Displays the list of posts, including titles, thumbnails, or excerpts.
+4
+Scroll through the list and view details of each post.
+
+Alternative Flows
+AF1
+If the actor has not posted any content yet, the system displays a message indicating that the post list is empty.
+AF2
+The actor can filter the list to view specific types of content (e.g., articles, photos, videos).
+Exceptions
+EC1
+If there is a system error while retrieving the post list, the system displays an error message.
+1. The actor can retry or contact support.
+Priority
+Medium
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+View posts on wall
+UC ID and Name
+UC14 - View posts on wall
+Created by
+SonNH
+Date Created
+27/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+The actor scroll and see a collection of posts displayed on a virtual wall (Home page).
+Description
+The agent views a dynamic feed of posts, such as text, image, or video updates, sorted by a recommendation algorithm. (prioritises posts marked as important by the FPTU)
+Preconditions
+1. The actor is logged in to the system.
+2. The system aggregates posts from various sources.
+Postconditions
+The actor sees the wall with the latest posts.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Navigates to the "Wall" section.
+ 
+2
+ 
+Retrieves recent posts based on predefined criteria.
+3
+
+Displays the posts in a visually appealing layout
+4
+Scroll through the wall to view content.
+
+5
+Click on a post opens a detailed view
+
+Alternative Flows
+AF1
+The actor can filter the wall to view specific types of content
+AF2
+The actor can search for specific keywords within the wall.
+Exceptions
+EC1
+If there is a system error while retrieving or displaying posts, the system shows an error message.
+1. The actor can retry or contact support.
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-80, BR-83, BR-84, BR-85
+Other Information
+N/A
+Assumptions
+N/A
+Search on list friend
+UC ID and Name
+UC15 - Search on list friend
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+Actor click "Search" button or press "Enter" key of keyboard
+Description
+Search on list friend and show list friend with keyword
+Preconditions
+1. Login into system
+2. Have friends
+Postconditions
+1. Show list friends
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Enter the keyword in the search friends box
+ 
+2
+ Click Search button
+
+3
+
+Displays a list of friends from the keyword you just searched for
+Alternative Flows
+AF1
+If you don't have friend match with keyword searching will appear nothing
+Exceptions
+N/A
+Priority
+High
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+Filter on list friend
+UC ID and Name
+UC16 - Filter on list friend
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+Actor selected option of dropdown to filter on list friend
+Description
+Filter your friends list with the available options
+Preconditions
+1. Login into system
+2. Have friends
+Postconditions
+1. Displays a list of friends matching the selected option
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Selected option
+
+2
+
+Displays a list of friends matching the selected option
+Alternative Flows
+N/A
+Exceptions
+N/A
+Priority
+High
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+View list notifications 
+UC ID and Name
+UC17  - View list notifications
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+
+Trigger
+Actor clicks the "Notification" icon on the navigation bar
+Description
+List all notifications of actor
+Preconditions
+1. Login into system
+2. Have notifications
+Postconditions
+1. Display all notifications
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click icon notification on header
+
+2
+
+Show pop-up notifications
+3
+Click show all
+
+4
+
+Redirect page notifications to show all notifications
+Alternative Flows
+N/A
+Exceptions
+N/A
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-82, BR-35,BR-36
+Other Information
+N/A
+Assumptions
+N/A
+Click On Notify To Redirect Page
+UC ID and Name
+UC18  - Click On Notify To Redirect Page
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+
+Trigger
+Actor clicks the "Notification" item on the notifications list
+Description
+Redirect to the corresponding page and mark it to readed
+Preconditions
+1. Login into system
+2. Have notifications
+3. Open notifications list
+Postconditions
+1. Display the page/screen which notification is redirect
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click notification item
+
+2
+
+Redirect to the corresponding page and mark it to readed
+Alternative Flows
+N/A
+Exceptions
+N/A
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-82
+Other Information
+N/A
+Assumptions
+N/A
+Accept friend request 
+UC ID and Name
+UC19  - Accept friend request
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+
+Trigger
+Actor clicks to "Accept" button to accept  friend request
+Description
+Actors agree to become friends with friend requests
+Preconditions
+1. Login into system
+2. Have friend request
+Postconditions
+1. Accept or decline request
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click accept 
+
+2
+
+Show success 
+Alternative Flows
+AF1
+1. Actor click decline
+2. Show reject to make friend
+Exceptions
+N/A
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-19
+Other Information
+N/A
+Assumptions
+N/A
+Manage Post
+UC ID and Name
+UC20 - Manage Post
+Created by
+AnhBQ
+Date Created
+26/05/2024
+Primary Actor
+Member
+Secondary Actors
+None
+Trigger
+TG1
+The actor clicks to the text-box of the create section on the home page or profile page.
+TG2
+The actor clicks to "update" a post they have created.
+TG3
+The actor clicks  "delete"  a post they have created.
+TG4
+The actor clicks  "enable" a post they have created.
+TG5
+The actor clicks  "disable" a post they have created.
+Description
+Actors can create, update, delete, enable, or disable their posts by selecting the appropriate option from a menu.
+Preconditions
+PRE1,PRE2:
+1. Actor is logged into the system.
+PRE3,PRE4,PRE5:
+1. Actor is logged into the system.
+2. Actor has created a post.
+Postconditions
+POS1: The post is added.
+POS2: The post is updated.
+POS3: The post is deleted.
+POS4: The post is enabled.
+POS5: The post is disabled.
+Normal Flow
+1.Create Post:
+1. Clicks to text-box of the create section.
+2. Displays a post creation form.
+3. Enters the post content.
+4. Clicks the "Post" button.
+5. Validates the input and publishes the post.
+2.Update Post:
+1. Actor click on the "Update post" button for the post they want to update.
+2. The system displays a form with the current content of the post.
+3. Actor edits the content, tags, or privacy settings of the post.
+4. The system validates the new information.
+5. User clicks on the "Save" button.
+6. The system updates the post with the new information and displays a confirmation message.
+3.Delete Post:
+1. Actor clicks on the "More" button for the post they want to delete.
+2. The system displays a menu with the options "Delete".
+3. Actor selects the desired option.
+4. The system performs the selected action and displays a confirmation message.
+4.Enable Post:
+1. Actor clicks on the "More" button for the post they want to enable.
+2. The system displays a menu with the options "Enable".
+3. Actor selects the desired option.
+4. The system performs the selected action and displays a confirmation message.
+5.Disable Post
+1. Actor clicks on the "More" button for the post they want to disable.
+2. The system displays a menu with the options "Disable".
+3. Actor selects the desired option.
+4. The system performs the selected action and displays a confirmation message.
+Alternative Flows
+Step
+Actors Actions
+System Responses
+1
+Actor clicks on the "Cancel" button
+
+2
+
+The system does not perform any action and returns the actor to the previous page.
+Exceptions
+EX1,EX2:
+1. The new information is invalid.
+2. The actor is not logged in. (System timeout)
+EX2:
+1. The actor does not have permission to edit the post.
+EX3,EX4,EX5:
+1. The actor is not logged in. (System timeout)
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-02, BR-03, BR-06, BR-09, BR-11, BR-24, BR-25, BR-26, BR-27, BR-28, BR-29, BR-30
+Other Information
+N/A
+Assumptions
+N/A
+
+React Post
+UC ID and Name
+UC21 - React Post
+Created by
+HoanLH
+Date Created
+26/05/2024
+Primary Actor
+Member
+Secondary Actors
+None
+Trigger
+The actor holds and clicks " React" icon to react to a post they have seen.
+Description
+Actors can like to posts by selecting a reaction from a set of available reactions.
+Preconditions
+1. Actor is logged into the system.
+2. Actor has seen a post.
+
+Postconditions
+1. The actor's like is added to the post.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Actor holds and clicks "React" icon for the post they want to react to.
+
+2
+
+The system displays a menu with a set of available reactions.
+3
+Actor selects the desired reaction
+
+4
+
+The system adds the actor's reaction to the post and displays the updated reaction count.
+Alternative Flows
+Step
+Actors Actions
+System Responses
+1
+Actor don't click the "React" icon or reclick the "Like" icon after like post
+
+2
+
+The system does not add the actor's reaction to the post.
+Exceptions
+EC1
+The actor is not logged in. (System timeout)
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-75, BR-33, BR-36
+Other Information
+N/A
+Assumptions
+N/A
+
+View List Comment Post
+UC ID and Name
+UC22 - View List Comment Post
+Created by
+HoanLH
+Date Created
+26/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+None
+Trigger
+The actor clicks the "Comment" button to view the comments on a post.
+Description
+Actors can view the comments on a post by clicking on the "Comments" button.
+Preconditions
+1. Actor is logged into the system.
+2. Actor has seen a post.
+
+Postconditions
+1. The list of comments for the post is displayed.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Actor clicks on the "Comments" icon for the post they want to view the comments for.
+
+2
+
+The system displays the list of comments for the post.
+3
+Actor can scroll through the list of comments and read them.
+
+4
+
+The system displays the comments in chronological order, with the most recent comment at the top.
+Alternative Flows
+Step
+Actors Actions
+System Responses
+1
+Actor click outside the post
+
+2
+
+The system does not display the list of comments and returns the actor to the previous page.
+Exceptions
+EC1
+The actor is not logged in. (System timeout)
+
+Priority
+High
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+
+Manage Comment Post
+UC ID and Name
+UC23 - Manage Comment Post
+Created by
+HoanLH
+Date Created
+26/05/2024
+Primary Actor
+Member
+Secondary Actors
+None
+Trigger
+TG1
+The actor clicks to "add" a comment on a post.
+TG2
+The actor clicks to "update" a comment on a post.
+TG3
+The actor clicks to "delete" a comment on a post.
+Description
+Actor can add, update, or delete comments on posts by clicking on the appropriate button
+Preconditions
+1. Actor is logged into the system.
+2. Actor has seen a post.
+
+Postconditions
+1. The comment is added, updated, or deleted.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Actor clicks on the "Add Comment" button for the post they want to add a comment to.
+
+2
+
+The system displays a text area where the actor can enter their comment.
+3
+Actor enters their comment and clicks on the "Post" button.
+
+4
+
+The system adds the comment to the post and displays it in the list of comments.
+5
+Actor clicks on the "Edit" button for the comment they want to update.
+
+6
+
+The system displays a text area where the actor can edit their comment.
+7
+Actor edits their comment and clicks on the "Save" button
+
+8
+
+The system updates the comment and displays it in the list of comments.
+9
+Actor clicks on the "Delete" button for the comment they want to delete.
+
+10
+
+The system displays a confirmation message.
+11
+Actor clicks on the "Yes" button.
+
+12
+
+The system deletes the comment and removes it from the list of comments.
+Alternative Flows
+Step
+Actors Actions
+System Responses
+1
+Actor clicks on the "Cancel" button or actor click outside the post
+
+2
+
+The system does not add, update, or delete the comment and returns the actor to the previous page.
+Exceptions
+1. The actor is not logged in.
+2. The actor does not have permission to add, update, or delete comments on the post.
+3. The comment is empty.
+
+
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-72,BR-74, BR-81
+Other Information
+N/A
+Assumptions
+N/A
+
+React/Un-React Comment Post
+UC ID and Name
+UC24 - React/Un-React-Comment-Post
+Created by
+HoanLH
+Date Created
+26/05/2024
+Primary Actor
+Member
+Secondary Actors
+None
+Trigger
+ Actor wants to react to a comment on a post.
+Description
+Actor can react to comments on posts by selecting a reaction from a set of available reactions.
+Preconditions
+1. Actor is logged into the system.
+2. Actor has seen a post.
+3. Actor has seen a comment on the post.
+
+Postconditions
+1. The actor's reaction is added to the comment.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Actor clicks on the "React" icon for the comment they want to react to.
+
+2
+
+The system displays a menu with a set of available reactions.
+3
+Actor selects the desired reaction.
+
+4
+
+The system adds the actor's reaction to the comment and displays the updated reaction count.
+Alternative Flows
+Step
+Actors Actions
+System Responses
+1
+Actor click outside the comment or relick reaction icon
+
+
+
+The system does not add the actor's reaction to the comment and returns the actor to the previous page.
+Exceptions
+The actor is not logged in.
+
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-76, BR-33
+Other Information
+N/A
+Assumptions
+N/A
+Reply Comment Post
+UC ID and Name
+UC25 - Reply-Comment-Post
+Created by
+HoanLH
+Date Created
+26/05/2024
+Primary Actor
+Member
+Secondary Actors
+None
+Trigger
+Actor wants to reply to a comment on a post.
+Description
+Actor can reply to comments on posts by clicking on the "Reply" button.
+Preconditions
+1. Actor is logged into the system.
+2. Actor has seen a post.
+3. Actor has seen a comment on the post.
+
+Postconditions
+1. The actor's reply is added to the comment
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Actor clicks on the "Reply" button for the comment they want to reply to.
+
+2
+
+The system displays a text area where the actor can enter their reply.
+3
+Actor enters their reply and clicks on the "Post" button.
+
+4
+
+The system adds the actor's reply to the comment and displays it in the list of replies.
+Alternative Flows
+Step
+Actors Actions
+System Responses
+1
+Actor clicks on the "Cancel" button or delete all text 
+
+2
+
+The system does not add the actor's reply to the comment and returns the actor to the previous page.
+Exceptions
+The actor is not logged in.
+The actor does not have permission to reply to comments on the post.
+The reply is empty.
+
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-12
+Other Information
+N/A
+Assumptions
+N/A
+
+Create group
+UC ID and Name
+UC26 - Create group
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Group Manager
+Secondary Actors
+
+Trigger
+Actor wants to create group
+Description
+Actor create a group of people with something in common
+Preconditions
+1. Login into system
+2. Have permission to create group
+3. The actor is on "Group" screen
+Postconditions
+1. Manager create group successfully 
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click "Create new group" button
+
+2
+
+Redirect "Create group" page
+3
+Input group name
+
+4
+Choose privacy
+
+5
+Invite people to group
+
+6
+Click "Create" button
+
+7
+
+Redirect "Manage group" page
+Alternative Flows
+N/A
+Exceptions
+N/A
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-41
+Other Information
+N/A
+Assumptions
+N/A
+Invite member 
+UC ID and Name
+UC27- Invite member
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+
+Trigger
+Actor wants to invite member to group
+Description
+Manager invite member to group
+Preconditions
+1. Login into system
+2. The actor is on "Group" page
+
+Postconditions
+1. Add member into group successfully
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click "Invite" button
+
+2
+
+Show pop-up list actor 
+3
+Select the actor the manager wants to add
+
+4
+Click "Add" to add member to group
+
+5
+
+Show successfully
+Alternative Flows
+N/A
+Exceptions
+N/A
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-21, BR-22, BR-24, BR-51
+Other Information
+N/A
+Assumptions
+N/A
+
+
+
+View system's dashboard
+UC ID and Name
+UC28 - View system's dashboard
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Group Manager
+Secondary Actors
+
+Trigger
+Actor wants to view system's dashboard
+Description
+Manager view systeam's dashboard
+Preconditions
+1. Login into system
+2. The actor is on "Manage system" page
+
+Postconditions
+1. Manager view system's dashboard
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click on the "System dashboard" option
+
+2
+
+Show System dashboard
+Alternative Flows
+N/A
+Exceptions
+N/A
+Priority
+High
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+Share Post
+UC ID and Name
+UC29-Share post
+Created by
+QuanNA
+Date Created
+25/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to share a post on FUSP.
+Description
+Share a post on FUSP
+Preconditions
+1. The actor must be logged in to the FUSP.
+2. The actor must have a post to share.
+3. The post is in public or friends mode
+Postconditions
+1. The post is successfully shared on FUSP.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Select the post to share.
+ 
+2
+ 
+Displays options to interact with the post, including sharing.
+3
+Click on the "Share" button.
+ 
+4
+
+Prompts the actor to choose where to share the post.
+5
+Select the sharing options.
+
+6
+Enter any additional text or comments, if desired.
+
+7
+
+Displays the shared post preview.
+8
+Click on the "Share" button
+
+9
+
+The system shares articles and displays notifications
+Alternative Flows
+N/A
+Exceptions
+1. There is a system error during the sharing process.
+2. The post was deleted before being shared
+
+
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-79
+Other Information
+N/A
+Assumptions
+N/A
+View message list
+UC ID and Name
+UC30 - View message list
+Created by
+QuanNA
+Date Created
+25/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to view the message list on FUSP.
+Description
+View the list of messages on FUSP.
+Preconditions
+The actor must be logged in to the FUSP.
+Postconditions
+The actor successfully views the message list on FUSP.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click on the "Message" button on the navigation bar.
+ 
+2
+ 
+Loads the message list interface.
+3
+Scroll through the list of conversations.
+
+4
+
+Displays the list of conversations, including participants and recent messages
+Alternative Flows
+N/A
+Exceptions
+There is a system error loading the message list.
+Priority
+High
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+View a chat conversation
+UC ID and Name
+UC31 - View a chat conversation
+Created by
+QuanNA
+Date Created
+25/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to view a chat conversation on FUSP.
+Description
+View a specific chat conversation on FUSP.
+Preconditions
+1. The actor must be logged in to the FUSP.
+2. The actor must have an active internet connection.
+3. The actor must have an existing chat conversation.
+Postconditions
+1. The actor successfully views the chat conversation on FUSP.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click on the "Message" button on the navigation bar.
+ 
+2
+ 
+Loads the message list interface..
+3
+Scroll through the list of conversations or search for a specific conversation.
+ 
+4
+
+Displays the list of conversations, including participants and recent messages.
+5
+Click on the desired conversation to view.
+
+6
+
+Opens the selected conversation and displays the message history.
+Alternative Flows
+N/A
+Exceptions
+1. There is a system error loading the chat conversation.
+2. The chat was previously deleted
+Priority
+High
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+View other people 's profile
+UC ID and Name
+UC32 - View other people 's profile
+Created by
+QuanNA
+Date Created
+25/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to view another person's profile on FUSP.
+Description
+View the profile page of another actor on FUSP.
+Preconditions
+The actor must know the name or username of the person whose profile they want to view.
+Actor profile is not banned
+Postconditions
+The actor successfully views the profile of the other person on FUSP
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click on "Name" or "Picture" of actor
+ 
+2
+ 
+Displays the profile information, including posts, photos, and basic information.
+Alternative Flows
+N/A
+Exceptions
+1. There is a system error during the logout process
+2. The person's profile is not found or inaccessible
+Priority
+High
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+
+
+Unfriend
+UC ID and Name
+UC33 - Unfriend
+Created by
+QuanNA
+Date Created
+25/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to unfriend another person on FUSP.
+Description
+Unfriend another actor's profile on FUSP to remove them from the friend list.
+Preconditions
+1. The actor must be logged in to the FUSP.
+2. The actor must be friends with the person they want to unfriend.
+
+Postconditions
+1. The actor successfully unfriends the other person on FUSP.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click on the "Name" or "Picture" of your friend
+ 
+2
+ 
+Displays your friend profile
+3
+Click on the "Friends" button on their profile.
+ 
+4
+Select the "Unfriend" option
+
+5
+Confirms the unfriend action.
+
+6
+
+The system removes the person from the actor's friend list.
+Alternative Flows
+N/A
+Exceptions
+1. The person's profile is not found or inaccessible.
+2. The unfriend action fails due to a technical issue.
+Priority
+High
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+View a group
+UC ID and Name
+UC34 - View a group
+Created by
+QuanNA
+Date Created
+25/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to view a group on the FUSP system.
+Description
+View a specific group on FUSP to see its content and interact with members.
+Preconditions
+The actor must know the name of group on FUSP
+Postconditions
+The actor successfully views the group created by other people.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click on the "Name" or "Picture" of group
+ 
+2
+ 
+Navigates to the selected group page
+3
+
+ Displays the group's content, including posts, discussions, and member information.
+Alternative Flows
+N/A
+Exceptions
+1. The group is not found or inaccessible.
+2. There is a system error loading the group content.
+Priority
+High
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+Join a group
+UC ID and Name
+UC35 - Join a group
+Created by
+QuanNA
+Date Created
+25/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to join a group on the FUSP system.
+Description
+Join a specific group on FUSP to participate in discussions, view content, and interact with other members.
+Preconditions
+1. The actor must be logged in to the FUSP
+2. The actor must know the name of group on FUSP
+Postconditions
+The actor successfully joins the group.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click on the "Name" or "Picture" of the group.
+ 
+2
+ 
+Navigates to the selected group page.
+3
+Click on the "Join" button.
+ 
+4
+
+The system sends requests  to join the group.
+5
+
+The system changes the button "Join" to "Cancel"
+Alternative Flows
+N/A
+Exceptions
+1. The group is not found or inaccessible.
+2. The joint group action fails due to a technical issue.
+Priority
+High
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+Out a group
+UC ID and Name
+UC36 - Out a group
+Created by
+QuanNA
+Date Created
+25/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to leave a group on the FUSP system.
+Description
+Leave a specific group on FUSP to stop receiving notifications, access to content, and participation in discussions.
+Preconditions
+1. The actor must be logged in to the FUSP
+2. The actor must be a member of the group they want to leave.
+Postconditions
+The actor successfully leaves the group on FUSP
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click on the "Name" or "Picture" of the group.
+ 
+2
+ 
+Navigates to the selected group page.
+3
+Click on the "Joined" button.
+ 
+4
+Confirms the leave group action
+
+5
+
+The system removes the actor from the group's member list.
+6
+
+The system changes the button "Joined" to "Join"
+Alternative Flows
+N/A
+Exceptions
+1. The group is not found or inaccessible.
+2. The leave group action fails due to a technical issue.
+Priority
+High
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+Assign role in group
+UC ID and Name
+UC37 - Assign role in group
+Created by
+SonNH
+Date Created
+19/08/2024
+Primary Actor
+Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to assign a role for a member in a group on the FUSP system.
+Description
+The Group Manager assigns specific roles (e.g., admin, censor, etc.) to a member of the group to manage their permissions and responsibilities within the group.
+Preconditions
+1. The actor must be logged in to the FUSP.
+2. The actor must have appropriate permissions to assign roles within the group.
+3. The member to be assigned a role must already be part of the group.
+Postconditions
+1. The selected member is successfully assigned the specified role within the group.
+2. The system updates the group member's role information accordingly.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Navigate to the group's member list.
+ 
+2
+ 
+Display the list of group members.
+3
+Click on the "more options" button (kebab menu) next to the member they want to promote.
+ 
+4
+
+Display the options available, including "Promote User."
+5
+Select the "Promote User" option.
+
+6
+
+Display the available roles for selection.
+7
+Select a role and confirm the action.
+
+8
+
+Assign the selected role to the member and update the group member list.
+9
+Receive confirmation of the successful role assignment.
+
+Alternative Flows
+N/A
+Exceptions
+E1: The role assignment fails due to a technical issue.
+- The system displays an error message.
+
+Priority
+High
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+Kick user out of group
+UC ID and Name
+UC38 - Kick user out of group
+Created by
+SonNH
+Date Created
+19/08/2024
+Primary Actor
+Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to remove a member from the group on the FUSP system.
+Description
+The actor removes a specific member from the group, revoking their access to the group's content, discussions, and notifications.
+Preconditions
+1. The actor must be logged in to the FUSP.
+2. The actor must have the necessary permissions to remove members from the group.
+3. The member to be removed must currently be part of the group.
+Postconditions
+1. The selected member is successfully removed from the group.
+2. The system updates the group member list and revokes the removed member's access to the group's content and discussions.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Navigate to the group's member list.
+ 
+2
+ 
+Display the list of group members.
+3
+Click on the "more options" button (kebab menu) next to the member they want to remove.
+ 
+4
+
+Display the options available, including "Promote User."
+5
+Select the "Promote User" option.
+
+6
+
+Prompt the Group Manager to confirm the removal action.
+7
+Confirm the removal.
+
+8
+
+Remove the member from the group and update the member list.
+9
+Receive confirmation of the successful removal.
+
+Alternative Flows
+N/A
+Exceptions
+E1: The removal action fails due to a technical issue.
+- The system displays an error message.
+
+Priority
+High
+Frequency of Use
+Moderate
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+Set the group setting
+UC ID and Name
+UC39 - Set the group setting
+Created by
+SonNH
+Date Created
+19/08/2024
+Primary Actor
+Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to configure or update the settings for a group on the FUSP system.
+Description
+The actor modifies various settings of a group using toggle buttons for options like auto-join, auto-approve posts, and making the group public. Changes are applied immediately without requiring further confirmation.
+Preconditions
+1. The actor must be logged in to the FUSP.
+2. The actor must have the necessary permissions to modify the group settings.
+3. The group must already be created and the Group Manager must have access to it.
+Postconditions
+1. The group settings are updated in real-time as the Group Manager toggles the switches.
+2. The system reflects the updated settings immediately, affecting how the group functions and interacts with its members.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Navigate to the group's settings page.
+ 
+2
+ 
+Display the current settings of the group with toggle buttons.
+3
+Toggle the switches for desired settings (e.g., auto-join, auto-approve posts, public group).
+ 
+4
+
+Update the settings based on the Group Manager's actions.
+5
+Observe the immediate effect of the toggled settings.
+
+6
+
+Reflect the new status of each setting as toggled by the Group Manager.
+7
+Exit the settings page or continue with other tasks.
+
+8
+
+Maintain the updated settings without needing further action.
+Alternative Flows
+N/A
+Exceptions
+E1: The settings update fails due to a technical issue.
+- The system displays an error message.
+
+Priority
+High
+Frequency of Use
+Moderate
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+View list group request
+UC ID and Name
+UC40 - View list group request
+Created by
+SonNH
+Date Created
+19/08/2024
+Primary Actor
+Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to view a list of pending group join requests on the FUSP system.
+Description
+The actor accesses a list of pending requests from members who have requested to join the group on the FUSP system. The Group Manager can review these requests and take appropriate actions such as approving or rejecting them.
+Preconditions
+1. The actor must be logged in to the FUSP system.
+2. The actor must have the necessary permissions to view and manage group join requests.
+Postconditions
+1. The actor successfully views the list of pending join requests.
+2. The action can take action on each request, affecting the membership status.
+
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Navigate to the group's request list.
+ 
+2
+ 
+Display the list of pending join requests for the group.
+3
+Review the list of requests, including the member's name and avatar.
+ 
+4
+
+Show each pending request with the member's name, avatar, and "Approve" and "Decline" buttons.
+5
+Select "Approve" or "Decline" for a request.
+
+6
+
+Process the selected action, updates the membership status accordingly, and notifies the requesting member of the decision.
+7
+Continue reviewing other requests or exit the requests page.
+
+8
+
+Maintain the updated list of requests and reflect any changes in membership status immediately.
+Alternative Flows
+N/A
+Exceptions
+E1: System failure to load the list of group requests.
+- The system displays an error message.
+
+Priority
+High
+Frequency of Use
+Moderate
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+Search user
+UC ID and Name
+UC41 - Search user
+Created by
+SonNH
+Date Created
+25/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to search for a specific user on the FUSP system.
+Description
+Search for a user on FUSP by their name or username to view their profile or send a friend request.
+Preconditions
+1. The actor must be logged in to the FUSP.
+2. The actor must know the name or username of the person they want to find.
+
+Postconditions
+The actor successfully finds the user on Facebook.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click on the search bar at the top of the screen.
+ 
+2
+ 
+Activates the search function.
+3
+Select the desired filter criteria such as location, interests, or mutual friends.
+
+4
+
+Displays search results related to the entered name or username.
+Alternative Flows
+N/A
+Exceptions
+1. There is a system error during the filtering process.
+2. The filter criteria do not yield any results.
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-55
+Other Information
+N/A
+Assumptions
+N/A
+Filter users
+UC ID and Name
+UC42 - Filter users
+Created by
+QuanNA
+Date Created
+25/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to filter users on FUSP based on specific criteria.
+Description
+Filter users on FUSP to narrow down search results or group members based on certain criteria such as location, interests, or mutual friends.
+Preconditions
+The actor must be logged in to the FUSP
+Postconditions
+The actor successfully applies filters to the user search or group members list on FUSP.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Click on the "Logout" button on the navigation bar.
+ 
+2
+ 
+Activates the filter function.
+3
+Select the desired filter criteria such as location, interests, or mutual friends.
+ 
+4
+
+Applies the selected filters to the search results or group members list..
+Alternative Flows
+N/A
+Exceptions
+EC1
+If there is a system error during the logout process
+2. The system displays an error message and remains on the current page.
+Priority
+High
+Frequency of Use
+High
+Business Rules
+ 
+Other Information
+N/A
+Assumptions
+N/A
+Search all on homepage
+UC ID and Name
+UC43 - Search all on homepage
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member, Group Manager
+Secondary Actors
+N/A
+Trigger
+The actor wants to search post, friend or group name
+Description
+Search post, friend or group name on FUSP to find information necessary 
+Preconditions
+The actor must be logged in to the FUSP
+Postconditions
+The actor successfully search information necessary
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Type data on search text box and press enter
+ 
+2
+ 
+List all matching search results by category
+Alternative Flows
+N/A
+Exceptions
+N/A
+Priority
+High
+Frequency of Use
+High
+Business Rules
+BR-39
+Other Information
+N/A
+Assumptions
+N/A
+Create Post Report
+UC ID and Name
+UC44 - Create Post Report
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+User wants to report a post that violates the Definition or is inappropriate.
+Description
+User creates a report about a specific post.
+Preconditions
+User must be logged in to the system and viewing the post they want to report.
+Postconditions
+Report on the post is successfully created.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+You click on the "Report" option on the post.
+ 
+2
+ 
+The system displays a sample report.
+3
+The user selects a report from the list provided.
+
+4
+The user can provide additional details about the report (optional).
+
+5
+The user clicks on the "Submit Report" button.
+
+6
+
+The system creates the report and sends it to the administrator for review.
+7
+
+The system displays a confirmation message.
+Alternative Flows
+N/A
+Exceptions
+N/A
+Priority
+High
+Frequency of Use
+High
+Business Rules
+ BR-77
+Other Information
+N/A
+Assumptions
+N/A
+Create Comment Report
+UC ID and Name
+UC45 - Create Post Report
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+The user wants to report a comment that violates the rules or is inappropriate.
+Description
+The user creates a report about a specific comment.
+Preconditions
+The user must be logged in to the system and viewing the comment to be reported.
+Postconditions
+The report about the comment is successfully created.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+The user clicks the "Report" option on the comment.
+ 
+2
+ 
+The system displays the report form.
+3
+The user selects the reason for the report from the provided list.
+
+4
+The user can provide additional details about the report (optional).
+
+5
+The user clicks on the "Submit Report" button.
+
+6
+
+The system creates the report and sends it to the administrator for review.
+7
+
+The system displays a confirmation message.
+Alternative Flows
+N/A
+Exceptions
+N/A
+Priority
+Medium
+Frequency of Use
+Low
+Business Rules
+ BR-78
+Other Information
+N/A
+Assumptions
+N/A
+Create User Report
+UC ID and Name
+UC46 - Create Post Report
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+The user wants to report another user for inappropriate behavior or a policy violation.
+Description
+The user is creating a report about a specific user.
+Preconditions
+The user must be logged in to the system and viewing the profile of the user they want to report.
+Postconditions
+The user report was successfully created.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+The user clicks on the "Report" option on the user profile.
+ 
+2
+ 
+The system displays the report form.
+3
+The user selects the reason for the report from the provided list.
+
+4
+The user can provide additional details about the report (optional).
+
+5
+The user clicks on the "Submit Report" button.
+
+6
+
+The system creates the report and sends it to the administrator for review.
+7
+
+The system displays a confirmation message.
+Alternative Flows
+N/A
+Exceptions
+N/A
+Priority
+Medium
+Frequency of Use
+Low
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+
+Block User
+UC ID and Name
+UC47 - Block User
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+User wants to block another user.
+Description
+User blocks another user to prevent them from interacting with him/her.
+Preconditions
+User must be logged in to the system.
+Postconditions
+Blocked users will not be able to view the profile, posts, or contact the blocked user.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+User navigates to the profile of the user they want to block.
+ 
+2
+ User clicks the "Block" option.
+
+3
+
+System displays a confirmation message.
+4
+User confirms the blocking action.
+
+5
+
+System blocks the selected user.
+Alternative Flows
+AF01
+If the user has previously blocked this user, the system will notify the user.
+Exceptions
+EC01
+If there is a system error, the system displays an error message.
+Priority
+Medium
+Frequency of Use
+Low
+Business Rules
+ BR-57, BR-58, BR-90, BR-91
+Other Information
+N/A
+Assumptions
+N/A
+View List User Blocked
+UC ID and Name
+UC48 - View List User Blocked
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+Actors want to view the blocked list.
+Description
+Actors view the blocked list which includes users being blocked.
+Preconditions
+Actors must be logged in to the system.
+Postconditions
+Show the list with all users being blocked.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Actors visit their profile
+ 
+2
+ User clicks the "Friend" section.
+
+3
+
+System displays a list of friends and list users being blocked.
+Alternative Flows
+N/A
+Exceptions
+EC01
+If there is a system error, the system displays an error message.
+Priority
+Medium
+Frequency of Use
+Low
+Business Rules
+ BR-59
+Other Information
+N/A
+Assumptions
+N/A
+Unblock User
+UC ID and Name
+UC49 - Unblock User
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+Actors want to unblock user.
+Description
+Actors unblock users to allow them to interact with them again
+Preconditions
+Actors must be logged in to the system.
+Actors have one or more other user in blocked list
+Postconditions
+Users who unblocked can see and interact with them
+
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+Actors visit their profile
+ 
+2
+ User clicks the "Friend" section.
+
+3
+
+System displays a list of friends and list users being blocked.
+4
+Click "Unblock" beside each user to unblock this user
+
+5
+
+System will remove this user out of list
+Alternative Flows
+N/A
+Exceptions
+EC01
+If there is a system error, the system displays an error message.
+Priority
+Medium
+Frequency of Use
+Low
+Business Rules
+ BR-59
+Other Information
+N/A
+Assumptions
+N/A
+
+Q&A with AI
+UC ID and Name
+UC50 - Q&A with AI
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+The user wants to get help or information from the AI ​​chatbot.
+Description
+The user interacts with the AI ​​chatbot to ask a question and get an answer.
+Preconditions
+The user must be logged in to the system.
+Postconditions
+The user receives an answer from the AI ​​chatbot or is redirected to a relevant information source.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+The user accesses the AI ​​chatbot interface (which can be a chat window or a chatbot icon).
+ 
+2
+ The user enters a question or request.
+
+3
+
+The AI ​​chatbot processes the user's input and generates an answer.
+4
+
+The AI ​​chatbot displays the answer to the user.
+Alternative Flows
+AF01
+If the user enters invalid or unclear input, the AI ​​chatbot requests clarification or additional information.
+Exceptions
+EC01
+If there is a system error while processing the request, the AI ​​chatbot displays an error message and suggests trying again later.
+Priority
+Medium
+Frequency of Use
+High
+Business Rules
+N/A
+Other Information
+N/A
+Assumptions
+N/A
+Suggest friend
+UC ID and Name
+UC51 - View Friend Suggestions
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+The user wants to view the suggested friend list.
+Description
+The system displays a list of other users that the current user may want to be friends with, based on various criteria such as mutual friends, common interests, etc.
+Preconditions
+The user must be logged in to the system.
+Postconditions
+The suggested friend list is displayed to the user.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+The user navigates to the friends section or another area where friend suggestions are displayed.
+ 
+2
+
+The system retrieves the suggested friend list based on the suggestion algorithm.
+3
+
+The system displays a list, including the name or avatar of each suggested user.
+4
+The user can scroll through the list and view the profile details of each suggested user.
+
+Alternative Flows
+N/A
+Exceptions
+N/A
+Priority
+Medium
+Frequency of Use
+Medium
+Business Rules
+BR-56
+Other Information
+N/A
+Assumptions
+N/A
+Suggest group
+UC ID and Name
+UC52 - View Group Suggestions
+Created by
+HoanNK
+Date Created
+25/05/2024
+Primary Actor
+Member
+Secondary Actors
+N/A
+Trigger
+The user wants to view the list of suggested groups.
+Description
+The system displays a list of groups that the current user may want to join, based on various criteria such as the user's interests, groups of friends who have joined, etc.
+Preconditions
+The user must be logged in to the system.
+Postconditions
+The list of suggested groups is displayed to the user.
+Normal Flow
+Step
+Actors Actions
+System Responses
+1
+The user navigates to the friends section or another area where friend suggestions are displayed.
+ 
+2
+
+The system retrieves the list of suggested groups based on the suggestion algorithm.
+3
+
+The system displays the list, including the name and profile picture of each suggested group.
+4
+The user can scroll through the list and view details of each suggested group.
+
+Alternative Flows
+N/A
+Exceptions
+N/A
+Priority
+Medium
+Frequency of Use
+Medium
+Business Rules
+BR-57
+Other Information
+N/A
+Assumptions
+N/A
+3. Functional Requirements
+3.1 System Functional Overview
+3.1.1 Screens Flow
+● Screen Flow Overview:
+
+Figure 6.  Overview Screens Flow diagram
+
+● Screen Flow Of Member
+
+● Screen Flow Of Group Manager:
+
+● Screen Flow Of Admin:
+
+
+3.1.2 Screen Descriptions
+
+#
+Feature
+Screen
+Description
+1
+Common
+Landing Page
+First page appears when opening the application
+2
+Common
+Login
+Page for login system
+3
+Common
+Homepage
+Show posts, notifications and messages
+4
+Profile
+Personal Profile
+Show all information about personal profile: Nickname, Image, Bio,Profile Detail, Friends, Post,...
+5
+Profile
+Other Account Profile
+Show all information about other user  profiles if they have been public: Nickname, Image, Bio, Friends, Post,...
+6
+Profile
+Album
+Show list images which are posted
+7
+Profile
+Friend List
+List all friends of this account
+8
+Profile
+Profile Detail
+List all public information about: hometown, place of living, place of work, educational level, organizations, ..etc.
+9
+Profile
+Follower List
+List all follower of this account
+10
+Profile
+Profile Management
+List all profile of  actors and action of it
+11
+Post
+Post View
+Show all posts of the group which the user joined or account which user follow: status, images, videos, shared post,... And post actions
+12
+Post
+Post Setting
+List all properties of post (add, edit, delete, pin, save, audience) and action of it
+13
+Post
+Create Post
+The act of creating and posting articles on personal pages, other people's pages or groups
+14
+Post
+Saved Post List
+List all posts which user saved
+15
+Request 
+Friend Request List
+List all accounts which send "Add Friend Request"  to current accounts
+16
+Notification
+Recent Notifications List
+Popup to list some recent notifications
+17
+Notification
+All Notification List
+List all notification with filter read/unread
+18
+Message 
+Message Box
+Lists all messages you receive
+19
+Message 
+Conversation Box
+Displays the most recent messages of a conversation
+20
+Search 
+Search Box
+A text-box that displays recent search history with search suggestions
+21
+Search 
+Search result
+Show all results(account, post, group, ...)  matches the keyword
+22
+Group
+Group List
+List all groups which user joined
+23
+Group
+Group Post List
+List all posts of all groups which user joined
+24
+Group
+Group Post 
+List all posts of group which user is accessing
+25
+Group
+Group Management
+List all activities to manage group and action of it
+26
+Group
+Post Moderation
+List all posts that are waiting for moderation to be published
+27
+Admin
+User Management
+List all activities to manage user and action of it
+28
+Admin
+Dashboard View
+List all necessary parameters, statistics, and system analysis
+29
+Admin
+List Group Management
+List all group to manage group: create group, add member, assign role,..
+30
+Admin
+Report Management
+List all report from user to check
+3.1.3 Screen Authorization
+
+Screen
+Member
+Group Manager
+Admin
+Landing Page
+X
+X
+X
+Login
+X
+X
+X
+Homepage
+X
+X
+X
+Personal Profile
+X
+X
+X
+Other Account Profile
+X
+X
+X
+Album
+X
+X
+X
+Friend List
+X
+X
+X
+Profile Management
+X
+X
+X
+Post View
+X
+X
+X
+Post Setting
+X
+X
+X
+Create Post
+X
+X
+X
+Saved Post List
+X
+X
+X
+Friend Request List
+X
+X
+X
+Recent Notifications List
+X
+X
+X
+All Notification List
+X
+X
+X
+Message Box
+X
+X
+X
+Conversation Box
+X
+X
+X
+Search Box
+X
+X
+X
+Search result
+X
+X
+X
+Group List
+X
+X
+X
+Group Post List
+X
+X
+X
+Group Post
+X
+X
+X
+Group Management
+
+X
+
+Post Moderation
+
+X
+
+Group User Management
+
+X
+
+User Management
+
+
+X
+Dashboard View
+
+
+X
+List Group Management
+
+
+X
+Report Management
+
+
+X
+3.1.4 Non-Screen Functions
+
+#
+Feature
+System Function
+Description
+1
+Notification
+Block send notification
+If other member spam action: 'react', receiver will get only one notification for this action. When receiver click to notice (change the read status is true), allow to receive notifications from that user for this action(again).
+3.1.5 Entity Relationship Diagram
+       *FUSP have 83 entities.
+       Link ERD: EDR Draw.io
+       
+
+Figure 7. Entity Relationship Diagram
+
+Figure 8.  Profile Entity Relationship Diagram
+
+Figure 9.  Group Entity Relationship Diagram
+
+Figure 10.  Personal Post Relationship Diagram
+
+Figure 11.  Group Post Relationship Diagram
+
+
+Entities Description
+#
+Entity
+Description
+01
+AdminProfile
+Represent admin profile in the system
+02
+AvataPhoto
+Represent avatar of all user in system
+03
+BlockType
+Represent the type of block action
+04
+BlockUser
+Represent  the users who block and were blocked
+05
+Client
+Represents a client application that interacts with the FUSP system
+06
+CommentGroupPost
+Represents a comment made on a post within a group
+07
+CommentGroupSharePost
+Represents a comment made on a shared group post
+08
+CommentGroupVideoPost
+Represents a comment made on a video post within a group
+09
+CommentPhotoGroupPost
+Represents a comment made on a photo post within a group
+10
+CommentPhotoPost
+Represents a comment on a standalone photo post
+11
+CommentPost
+Represents a general comment made on a standard post in the system
+12
+CommentSharePost
+Represents a comment made on a shared post within the system
+13
+CommentVideoPost
+Represents a comment made on a video post
+14
+ContactInfo
+Represents the contact details of a user
+15
+Follower
+Represents a user who is following another user
+16
+Friend
+Represents a friendship relationship between two users in the system
+17
+Gender
+Represents the gender identity of a user
+18
+GroupFPT
+Represents a group within the FUSP platform
+19
+GroupInvitation
+Represents an invitation for a user to join a group
+20
+GroupMember
+Represents the membership relationship between a user and a group
+21
+GroupPhoto
+Represents a photo uploaded to a group. It stores the details of the image, such as the uploader, file path, and metadata
+22
+GroupPost
+Represents a post made within a group
+23
+GroupPostPhoto
+Represents a photo attached to a post within a group
+24
+GroupPostReactCount
+Represents the count of reactions (like, love, etc.) that a group post has received
+25
+GroupPostVideo
+Represents a video attached to a post within a group
+26
+GroupRole
+Represents the role a user holds within a group, such as admin, moderator, or member
+27
+GroupSetting
+Represents the settings and configurations for a group, such as privacy options, post approval requirements, and member permissions
+28
+GroupSettingUse
+Tracks the actual usage of group settings by members and admins
+29
+GroupSharePost
+Represents a post shared by a user within a group
+30
+GroupStatus
+Represents the status of a group, such as public, private, auto, censor
+31
+GroupTag
+Represents tags associated with a group, used to categorize the group or make it easier to find. These tags can be based on group topics, themes, or activities.
+32
+GroupTagUsed
+Tracks the usage of tags of groups
+33
+GroupType
+Represents the type or category of a group, such as a hobby group, professional group, or study group. It categorizes groups for easier searching and filtering
+34
+GroupVideo
+Represents videos uploaded to a group
+35
+Interest
+Represents the interests of a user, such as hobbies or topics they are passionate about
+36
+Notification
+Represents a notification sent to a user regarding actions, events, or updates in the system
+37
+NotificationType
+Defines different types of notifications in the system, such as friend requests, post reactions, or event reminders.
+38
+Photo
+Represents a photo uploaded by a user
+39
+PostReactCount
+Represents the count of reactions on a post, such as likes, loves, and other reaction types
+40
+ReactComment
+Represents a reaction on a comment, such as a like, love, or another emoticon
+41
+ReactGroupCommentPost
+Represents a reaction to a comment on a group post
+42
+ReactGroupPhotoPost
+Represents a reaction to a photo post within a group
+43
+ReactGroupPhotoPostComment
+Represents a reaction to a comment on a group photo post
+44
+ReactGroupPost
+Represents a reaction to a group post, such as a like, love, or other reaction types
+45
+ReactGroupSharePost
+Represents a reaction to a shared post within a group
+46
+ReactGroupSharePostComment
+Represents a reaction to a comment on a shared post within a group
+47
+ReactGroupVideoPost
+Represents a reaction to a video post within a group
+48
+ReactGroupVideoPostComment
+Represents a reaction to a comment on a video post within a group
+49
+ReactPhotoPost
+Represents a reaction to a photo post by a user
+50
+ReactPhotoPostComment
+Represents a reaction to a comment on a photo post
+51
+ReactPost
+Represents a reaction to a regular post, such as a like, love, or other reaction types
+52
+ReactSharePost
+Represents a reaction to a shared post
+53
+ReactSharePostComment
+Represents a reaction to a comment on a shared post
+54
+ReactType
+Defines the different types of reactions available in the system, such as like, love, wow, sad, angry, etc. Each type of reaction is associated with an icon or emoji.
+55
+ReactVideoPost
+Represents a reaction to a video post, such as a like, love, ...
+56
+ReactVideoPostComment
+Represents a reaction to a comment on a video post
+57
+Relationship
+Represents the type of relationship between two users
+58
+ReportComment
+Represents a report made by a user regarding a specific comment
+59
+ReportPost
+Represents a report made by a user regarding a specific post
+60
+ReportProfile
+Represents a report made by a user regarding another user's profile
+61
+ReportType
+Defines the different types of reports available in the system
+62
+Role
+Represents the role a user holds in the system
+63
+Setting
+Represents global settings and configurations within the system that can affect functionality and user experience
+64
+SharePost
+Represents a post that has been shared by a user
+65
+UserChat
+Represents a chat conversation between two or more users
+66
+UserClientPermission
+Tracks permissions assigned to a user regarding their interactions with client applications
+67
+UserGender
+Represents a user's gender identity
+68
+UserInterest
+Represents a user's specific interests, hobbies, or areas of focus within the platform
+69
+UserPost
+Represents a post made by a user
+70
+UserPostPhoto
+Represents a photo post created by a user
+71
+UserPostVideo
+Represents a video post created by a user
+72
+UserProfile
+Represents a user's profile, containing information such as their name, bio,...
+73
+UserRelationship
+Represents the relationship between two users, such as friends, blocked, or pending friend requests
+74
+UserSetting
+Represents settings and preferences defined by a user
+75
+UserStatus
+Represents the current status or activity of a user
+76
+Video
+Represents a video uploaded by a user
+77
+WebAffiliation
+Represents a user's affiliations with websites or online services
+78
+WorkPlace
+Represents the workplace or employer information for a user
+79
+SSO Google
+Represents user information from Google login portal
+80
+SSO FEID
+Represents user information from FEID login portal
+81
+Cloudinary
+File Store
+Represents the cloud stored large file: videos, photos
+82
+ChatEngine
+Represents the chat engine we use for system
+83
+GeminiAI
+Represents interaction with Gemini Ai system
+
+
+
+4. Non-Functional Requirements
+4.1 Usability
+- The interface should be easy to understand and friendly.
+- The system has an instruction manual that makes it easy for users to use after a few hours.
+
+4.2 Security
+-  Using JWT token-based authentication and authorization to access protected resources.
+- Must have SSO with service Google OpenAuth 2.0  
+       
+4.2 Performance
+- Use signalR to improve and increase response speed and user experience when interacting with the system
+4.3 Maintaining & Scalability
+- Using Google and Sonarlint for consistent coding conventions.
+4.4 Mockup
+	4.4.1 Home Page
+		
+	4.4.2 Personal Profile
+
+	4.4.3 List Image -  Personal Profile
+
+	4.4.4 Add Image - Personal Profile
+
+
+       4.4.5  Add Video - Personal Profile
+
+       4.4.6  Pop-up Notification
+
+
+       4.4.7  List All Notification 
+
+       4.4.8 List friend request
+       
+       
+5. Requirement Appendix
+5.1 Application Messages List
+#
+Message code
+Message Type
+Context
+Content
+1
+Error
+Error message
+Internal System
+System Error
+2
+NT01_Not_Found
+Error message
+Notify
+Notifications Type not found
+3
+N01_Not_Found
+Error message
+Notify
+You don't have any notifications
+4
+Context_Not_Found
+Error message
+Context
+Context not found
+5
+U01_Not_Found
+Error message
+User
+User not found
+6
+U02_Lock_User
+Error message
+User
+User is locked
+7
+U03_User_Exist
+Error message
+User
+User is Existed
+8
+U04_Can_Not_Create
+Error message
+User
+Can not create user with Email and FeId is null
+9
+U05_Not_Has_WebAffilication
+Error message
+User
+User don't have any web affilication
+10
+U06_User_Not_Active
+Error message
+User
+Account is not active
+11
+G01_Gender_Existed
+Error message
+Gender
+Gender is existed in data
+12
+G02_Gender_Not_Found
+Error message
+Gender
+Gender is not found
+13
+ST01_Status_Not_Found
+Error message
+Status 
+Status not found
+14
+ST02_Status_Existed
+Error message
+Status 
+Status is existed
+15
+RL01_Relationship_Existed
+Error message
+Relationship 
+Relationship is existed
+16
+S01_Settings_Existed
+Error message
+Setting 
+Setting is existed
+17
+R01_Role_Existed
+Error message
+Role 
+Role is existed
+18
+IT01_Interest_Existed
+Error message
+Interest 
+Interest is existed
+19
+P01_Not_Found
+Error message
+Post 
+Post not found
+20
+FR01_Cannot_Send
+Error message
+Friend
+Can not send friend
+21
+FR02_Accept_Friend
+Error message
+Friend
+Accept friend
+22
+FR03_Cancle_Friend
+Error message
+Friend
+Cancel friend
+23
+FR04_Reject_Friend
+Error message
+Friend
+Reject friend
+24
+FR05_Not_Friend
+Error message
+Friend
+Both are not friend
+25
+FR06_Can_Not_Friend
+Error message
+Friend
+You can not accept friend
+26
+FR07_Can_Not_Cancel_Friend
+Error message
+Friend
+You can not cancel friend request
+27
+FR08_Can_Not_Reject_Friend
+Error message
+Friend
+You can not reject friend request
+28
+UR01_NOT_FOUND
+Error message
+UserRelationship 
+UserRelationship not found
+29
+RT01_ReportType_Existed
+Error message
+ReportType
+ReportType is existed
+30
+GR01_Group_Role_Existed
+Error message
+Group
+Group role is existed
+31
+GR02_Group_Tag_Existed
+Error message
+Group
+Group tag is existed
+32
+GR03_Group_Setting_Existed
+Error message
+Group
+Group setting is existed
+33
+CM01_Comment_Not_Null
+Error message
+Comment
+Comment can't null
+34
+CM02_Parent_Comment_Not_Found
+Error message
+Comment
+Your comment you reply not found
+35
+CM03_Comment_Contain_Bad_Word
+Error message
+Comment
+Your comment contain bad word
+36
+CM04_Comment_Not_Found
+Error message
+Comment
+Your comment not found
+37
+GR04_Group_Type_Existed
+Error message
+Group
+Group type is existed
+38
+GR05_Group_Status_Existed
+Error message
+Group
+Group status is existed
+39
+GR06_Group_Name_Existed
+Error message
+Group
+Group Name is existed
+40
+GR07_Group_Name_Not_Null
+Error message
+Group
+Group Name is not null
+41
+GR08_Group_Is_Not_Exist
+Error message
+Group
+Group is not exist
+42
+GR09_Group_Post_Have_Bad_Word
+Error message
+Group
+Group post have bad word
+43
+GR10_Group_Joined
+Error message
+Group
+You can not join this group
+44
+GR11_Not_Permission
+Error message
+Group
+You are not permission in this group
+45
+GR12_Is_Request
+Error message
+Group
+Member is joined or requested in group
+46
+GR13_Can_Not_Invated
+Error message
+Group
+You can not invated this user to join group
+47
+GR14_Can_Not_Cancel_Request
+Error message
+Group
+You can not cancel request to join group
+48
+GR15_Can_Not_Out_Group
+Error message
+Group
+You can not out this group
+49
+GR16_User_Not_Exist_In_Group
+Error message
+Group
+User is not exist in this group
+50
+UP01_Post_Have_Bad_Word
+Error message
+Post
+Your post have bad word
+51
+UP02_Post_Not_Found
+Error message
+Post
+Post not found
+52
+UP03_Not_Authorized
+Error message
+Access
+Access denied!
+53
+UP04_Can_Not_Share_Owner_Post
+Error message
+Post
+Can't share owner post
+54
+PS01_Profile_Status_Private
+Error message
+Profile Status
+This account is protected!
+55
+RQ01_Request_Is_Null
+Error message
+Request
+Request is null!
+56
+GR17_Group_Is_Not_Exist
+Error message
+Group
+Group is not exist!
+57
+UP05_Can_Not_See_Content
+Error message
+Post
+Yon can not see this content!
+58
+UC01_User_Chat_Is_Exist
+Error message
+UserChat
+User is existed in chat!
+59
+UC02_User_Chat_Is_Not_Exist
+Error message
+UserChat
+User is not existed in chat!
+60
+PR01_Invalid_Report_Type
+Error message
+Report
+Invalid report type!
+61
+RP01_Report_Not_Found
+Error message
+Report
+Report not found!
+62
+CH01_Can_Not_Chat
+Error message
+Chat
+Can not send message with user!
+
+IV. Software Design Description
+
+1. System Design
+1.1 System Architecture
+
+Figure 1.1. System overview diagram
+1.1.1 System High-Level Design
+
+FUSP's System Architecture
+
+1.1.1.1 CQRS in FUSP
+ 	The social networking application "FUSP" is a platform where user interactions are primarily through reading content, including posts, comments, and user profiles. The volume of read operations is significantly higher compared to write operations, although the latter still needs to be handled with accuracy and efficiency.
+
+Figure 1.2.  FUSP's Back-end architecture (CQRS Pattern)
+Specific Issues:
+- High Read Load:
+● High read load: A significant number of read requests, especially as users continuously browse posts, view profiles, and search for content.
+● Low latency: Users expect quick and smooth data retrieval.
+● Consistency: Read data must be consistent and accurate, especially when users perform updates or add new content.
+
+- Write Load:
+● Lower but critical write load: Actions like posting, commenting, and liking posts need to be processed accurately and promptly to maintain a good user experience.
+● Consistency: Ensuring newly updated data is consistent and accurately reflected in subsequent read operations.
+
+- Bottlenecks and Performance:
+● Data bottlenecks: Processing both read and write loads on a single database can lead to bottlenecks and reduced performance.
+● Scalability: The system must be scalable to handle increasing traffic over time.
+
+- Maintenance and Development:
+● Complexity: Maintaining a single database for both read and write operations can be complex and prone to errors.
+● Development flexibility: The system needs to easily integrate new features without impacting performance and data consistency.
+
+Solution Approach:
+       Using CQRS to separate read and write operations helps optimize and enhance the system's performance.
+- Separate Read and Write Models:
+● Command Model: Data model and write operations such as creating posts, updating profiles, adding comments.
+● Query Model: Data model and read operations such as querying posts, searching for users, viewing profiles.
+
+- Implement Command Model:
+● Use a database designed for writes, like SQL Server or NoSQL databases.
+● Build APIs to handle commands like creating, updating, deleting data.
+
+- Implement Query Model:
+● Use a database optimized for querying and reading data.
+● Build APIs to handle queries, optimized for fast and efficient data retrieval.
+
+Benefits of Implementing CQRS:
+- Improved Performance: Optimizes the handling of read and write requests separately.
+- Scalability: Easily scale individual parts of the system independently.
+- Consistency: Use synchronization mechanisms to ensure data consistency across models.
+
+1.1.1.2 Back-end component
+❖ Chat Engine
+
+       We use chatengine.io as the core and customize it with project data and logic to develop the chat feature.
+       
+❖ SignalR
+
+       We use signalR to develop a real-time notifications system.
+       
+❖ Cloudinary (Cloud)
+
+	We use Cloudinary to store large data, media such as: photos, videos,... to serve features such as: posting photos, videos or avatars.
+
+❖ GeminiAI
+
+	We use GeminiAI for FAQ purposes as well as content on the FUSP system.
+
+
+
+1.1.2 Algorithms used in FUSP
+1.1.2.1 The Knuth-Morris-Pratt algorithm
+       The social network application "FUSP" aims to provide a safe and compliant environment for users. To achieve this, it is important to effectively detect and filter out posts that contain offensive or banned words. With the desire to help moderation teams and administrators more easily detect violating content, this requires a powerful and effective text search algorithm that can quickly identify words. or specific phrases in user-generated content.
+       
+       
+       
+- Specific Issues:
+● High Volume of Content: Users generate a significant amount of content continuously, requiring real-time text analysis.
+● Efficiency and Speed: The algorithm needs to be fast enough to handle large volumes of text without causing delays in content posting.
+● Accuracy: It must accurately identify prohibited words to ensure the safety and compliance of the platform.
+● Scalability: The solution must scale with the growing number of users and the corresponding increase in content volume.
+
+- Solution approach: Use the Knuth-Morris-Pratt (KMP) algorithm for the following reasons:
+● Linear Time Complexity: The KMP algorithm has a time complexity of O(n + m), where n is the length of the text and m is the length of the pattern (prohibited word). This ensures that even for large texts, the search operation remains efficient.
+● Preprocessing Step: KMP preprocesses the pattern to create a partial match table (also known as the "pi" table) which helps in skipping unnecessary comparisons during the search. This preprocessing step runs in O(m) time.
+● Efficient Search: Unlike naive search algorithms that can degrade to O(n*m) in the worst case, KMP efficiently skips over portions of the text that have been matched already, making it much faster.
+● Robustness: The algorithm is well-suited for applications requiring frequent and rapid text searches, ensuring that all instances of prohibited words are detected without repeated scanning.
+
+
+1.1.2.2 The EdgeRank algorithm
+       The social networking application "FUSP" aims to provide a personalized and engaging user experience by displaying relevant posts to users. With a high volume of user-generated content, it becomes essential to prioritize and rank posts effectively to ensure that users see the most relevant and engaging content first.
+       
+       
+       
+- Specific Issues:
+● Content Overload: Users generate a vast amount of content daily, making it challenging to show every post in a user's feed.
+● Relevance: Not all posts are equally relevant to every user. It is crucial to prioritize content that is more likely to engage the user.
+● User Engagement: Displaying relevant posts can increase user engagement and time spent on the platform.
+● Updates: The ranking algorithm needs to work, reflect the latest interactions and activities.
+       
+- Using the EdgeRank Algorithm (simple, lite version)
+       EdgeRank determines the relevance of posts in a user's news feed. It scores and ranks posts based on three main factors:
+● Affinity: The relationship between the user and the content creator. Higher interaction frequency between the user and the creator increases the affinity score. (This is the most difficult factor and we have not yet implemented it in the project)
+● Weight: The type of interaction. Different types of interactions (likes, comments, shares) have different weights. Comments and shares generally carry more weight than likes.
+● Time Decay: The age of the post. Newer posts are prioritized over older ones to keep the content fresh and timely.
+       
+1.1.2.3 Fine-tuning in GeminiAI:
+
+	Fine-tuning is the process of adjusting a pre-trained artificial intelligence (AI) model to make it more suitable for a specific task or dataset. In fine-tuning, the initial model (often a large model that has learned many general features from a large dataset) is further trained on a smaller, more specific dataset to refine its capabilities.
+
+
+
+The main goals of fine-tuning are:
+1. Optimize Performance: The model is fine-tuned to improve accuracy and performance for a particular task the user wants, such as text classification, image recognition, translation, or text generation.
+2. Reduce Training Time: Instead of training a model from scratch (which requires a lot of data and computational resources), you can use a pre-trained model and only adjust certain layers of the network to make it suitable for your specific data.
+       Fine-tuning is typically done by using parts of the pre-trained model (e.g., the feature extraction layers in deep neural networks) and then further training either the final layers or the entire model on a specific dataset.
+       Fine-tuning is widely used in natural language processing (NLP) and computer vision (CV), where pre-trained models like GPT, BERT, or ResNet serve as foundations that can be adapted to new tasks
+File using in turning model for FUSP 
+
+Config in Google AI Studio
+
+Implement in code
+
+
+1.2 Package Diagram
+1.2.1 Front-end Package Diagram
+
+Figure 1.3. Front-end Package Diagram
+Package Descriptions
+No
+Package
+Description
+01
+assets
+Folder containing external elements (img, gift, svg, icons,...)
+02
+components
+Sharing component react element 
+03
+pages
+Source code of page
+04
+apis
+Http request config for call api
+05
+ultils
+Common functions support app
+06
+img
+Folder containing images
+1.2.2 Back-end Package Diagram
+
+Figure 1.4. Back-end Package Diagram
+
+Package Descriptions
+No
+Package
+Description
+01
+Controller
+Contains classes that are defined as controllers, the main function is connected between client and server through API endpoints
+02
+Mapper
+Contains class definitions and methods to map between two objects (serving for auto mapper)
+03
+Middlewares
+Contains classes that define Middlewares methods such as: handle authentication, handle exception, handle email, SQL table dependency, etc
+04
+Hub
+Contains classes that are defined as hub (signalR) and hub service, the main function is connected between client and server through WebSocket
+05
+CQRS
+Define command and query interfaces to serve the implementation of CQRD architecture
+06
+Helper
+Contains classes that define common functions
+07
+Commands
+Contains classes that implement main logic with methods whose purposes are: create, update, delete (write to database)
+08
+Queries
+Contains classes that implement main logic with methods whose purposes are: select (read from database)
+09
+DTO
+Contains classes that declare necessary attributes to serve requests and responses
+10
+Services
+Contains classes with methods (code base) of services
+11
+ApiModels
+Contains classes with methods (codebase) to create custom api
+12
+CommandModels
+Contains entities that interact with the database (reserved for database writing)
+13
+QueryModels
+Contains entities that interact with the database (reserved for database reading)
+14
+Enums
+Define enums for notifications, entities type and exceptions
+15
+Exceptions
+Codebase for exception types
+16
+Extensions
+Contains some  common method for enum,...
+2. Database Design
+2.1 Operational Database Design
+       *FUSP have 78 table
+       
+
+Figure 2.1. Database Diagram
+URL: LinkDB_Diagram
+
+2.2 Table Description
+2.2.1 AvataPhoto
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+AvataPhotosId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+AvataPhotosUrl
+varchar(2000)
+ 
+x
+ 
+ 
+3
+UserId
+uniqueidentifier
+ 
+x 
+FK 
+ 
+4
+UserStatusId
+uniqueidentifier
+ 
+x
+FK 
+
+5
+IsUsed
+bit
+ 
+ x
+ 
+ 
+6
+CreatedAt
+datetime
+ 
+
+ 
+ 
+7
+UpdatedAt
+datetime
+
+
+
+
+Table 2.1. AvataPhoto
+
+2.2.2 BlockType
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+BlockTypeId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+BlockTypeName
+varchar(100)
+ 
+x
+ 
+ 
+3
+CreatedAt
+datetime
+ 
+
+ 
+ 
+4
+UpdatedAt
+datetime
+
+
+
+
+Table 2.2. BlockType
+2.2.3 BlockUser
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+BlockUserId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserId
+uniqueidentifier
+ 
+x
+ FK
+ 
+3
+UserIsBlockedId
+uniqueidentifier
+
+x
+FK
+
+4
+BlockTypeId
+uniqueidentifier
+
+
+FK
+
+5
+IsBlock
+bit
+
+
+
+
+6
+CreatedAt
+datetime
+ 
+
+ 
+ 
+7
+UpdatedAt
+datetime
+
+
+
+
+Table 2.3. BlockUser
+2.2.4 CommentGroupPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+CommentGroupPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupPostId
+uniqueidentifier
+ 
+x
+FK
+ 
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+GroupStatusId
+uniqueidentifier
+
+x
+FK
+
+5
+ParentCommentId
+uniqueidentifier
+
+
+
+
+6
+Content
+text
+
+
+
+
+7
+IsHide
+bit
+
+
+
+
+8
+CreatedAt
+datetime
+ 
+
+ 
+ 
+Table 2.4. CommentGroupPost
+2.2.5 CommentGroupVideoPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+CommentGroupVideoPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupPostVideoId
+uniqueidentifier
+ 
+x
+FK
+ 
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+GroupStatusId
+uniqueidentifier
+
+x
+FK
+
+5
+ParentCommentId
+uniqueidentifier
+
+
+
+
+6
+Content
+text
+
+
+
+
+7
+IsHide
+bit
+
+
+
+
+8
+CreatedAt
+datetime
+ 
+
+ 
+ 
+Table 2.5. CommentGroupVideoPost
+
+2.2.6 CommentPhotoGroupPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+CommentPhotoGroupPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupPostPhotoId
+uniqueidentifier
+ 
+x
+FK
+ 
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+GroupStatusId
+uniqueidentifier
+
+x
+FK
+
+5
+ParentCommentId
+uniqueidentifier
+
+
+
+
+6
+Content
+text
+
+
+
+
+7
+IsHide
+bit
+
+
+
+
+8
+CreatedAt
+datetime
+ 
+
+ 
+ 
+Table 2.6. CommentPhotoGroupPost
+2.2.7 CommentPhotoPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+CommentPhotoPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserPostPhotoId
+uniqueidentifier
+ 
+x
+FK
+ 
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+5
+ParentCommentId
+uniqueidentifier
+
+
+
+
+6
+Content
+text
+
+
+
+
+7
+IsHide
+bit
+
+
+
+
+8
+CreatedAt
+datetime
+ 
+
+ 
+ 
+Table 2.7. CommentPhotoPost
+2.2.8 CommentPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+CommentId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserPostId
+uniqueidentifier
+ 
+x
+FK
+ 
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+5
+ParentCommentId
+uniqueidentifier
+
+
+
+
+6
+Content
+text
+
+
+
+
+7
+IsHide
+bit
+
+
+
+
+8
+CreatedAt
+datetime
+ 
+
+ 
+ 
+Table 2.8. CommentPost
+2.2.9 CommentVideoPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+CommentVideoPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserPostVideoId
+uniqueidentifier
+ 
+x
+FK
+ 
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+5
+ParentCommentId
+uniqueidentifier
+
+
+
+
+6
+Content
+text
+
+
+
+
+7
+IsHide
+bit
+
+
+
+
+8
+CreatedAt
+datetime
+ 
+
+ 
+ 
+Table 2.9. CommentVideoPost
+2.2.10 ContactInfo
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ContactInfoId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserStatusId
+uniqueidentifier
+ 
+x
+FK
+ 
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+SecondEmail
+varchar(255)
+
+
+
+
+5
+PrimaryNumber
+varchar(11)
+
+x
+
+
+6
+SecondNumber
+varchar(11)
+
+
+
+
+7
+CreatedAt
+datetime
+ 
+
+ 
+ 
+8
+UpdatedAt
+datetime
+
+
+
+
+Table 2.10. ContactInfo
+2.2.11 Follower
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+FollowerId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+FollowedId
+uniqueidentifier
+ 
+x
+FK
+ 
+Table 2.11. Follower
+2.2.12 Gender
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GenderId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GenderName
+varchar(1000)
+ 
+x
+
+ 
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdatedAt
+datetime
+
+
+
+
+Table 2.12. Gender
+2.2.13 ReactSharePost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactSharePostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+SharePostId
+uniqueidentifier
+ 
+x
+FK
+ 
+3
+ReactTypeId
+uniqueidentifier
+
+x
+
+
+4
+UserId
+uniqueidentifier
+
+x
+FK
+
+5
+CreateDate
+datetime
+
+
+
+
+Table 2.13. ReactSharePost
+2.2.14 PostReactCount
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+PostReactCountId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserPostId
+uniqueidentifier
+ 
+x
+FK
+ 
+3
+UserPostPhotoId
+uniqueidentifier
+
+x
+FK
+
+4
+UserPostVideoId
+uniqueidentifier
+
+x
+FK
+
+5
+ReactCount
+int
+
+
+
+
+6
+CommentCount
+int
+
+
+
+
+7
+ShareCount
+int
+
+
+
+
+8
+CreateAt
+datetime
+
+
+
+
+9
+UpdateAt
+datetime
+
+
+
+
+Table 2.14. PostReactCount
+2.2.15 ReactGroupSharePostComment
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactGroupSharePosCommentId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupSharePostId
+uniqueidentifier
+ 
+x
+FK
+ 
+3
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+4
+UserId
+uniqueidentifier
+
+x
+FK
+
+5
+CommentGroupSharePostId
+uniqueidentifier
+
+
+
+
+6
+CreatedDate
+datetime
+
+
+
+
+Table 2.15. ReactGroupSharePostComment
+2.2.16 GroupFPT
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GroupId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+CreatedById
+uniqueidentifier
+
+x
+FK
+
+3
+GroupTypeId
+uniqueidentifier
+
+x
+FK
+
+4
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+5
+GroupNumber
+varchar(50)
+ 
+
+
+ 
+6
+GroupName
+nvarchar(200)
+
+x
+
+
+7
+GroupDescription
+nvarchar(1000)
+
+x
+
+
+8
+CreateAt
+datetime
+
+
+
+
+9
+UpdateAt
+datetime
+
+
+
+
+Table 2.16. GroupFPT
+2.2.17 GroupInvitation
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+InvitationId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+InviterId
+uniqueidentifier
+
+x
+FK
+
+3
+InvitedId
+uniqueidentifier
+
+x
+FK
+
+4
+GroupId
+uniqueidentifier
+
+x
+FK
+
+5
+StatusAccept
+bit
+ 
+x
+
+ 
+8
+CreateAt
+datetime
+
+
+
+
+9
+UpdateAt
+datetime
+
+
+
+
+Table 2.17. GroupInvitation
+2.2.18 GroupMember
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GroupId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserId
+uniqueidentifier
+
+x
+PK
+
+3
+GroupRoleId
+uniqueidentifier
+
+x
+FK
+
+4
+IsJoined
+bit
+
+
+
+
+5
+JoinedDate
+datetime
+
+
+
+
+Table 2.18. GroupMember
+2.2.19 GroupPhoto
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GroupPhotoId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupId
+uniqueidentifier
+
+x
+FK
+
+3
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+4
+PhotoUrl
+varchar(1000)
+
+x
+
+
+5
+PhotoBigUrl
+varchar(1000)
+
+
+
+
+6
+PhotoSmallUrl
+varchar(1000)
+
+
+
+
+7
+GroupPhotoNumber
+varchar(50)
+
+
+
+
+8
+CreateAt
+datetime
+
+
+
+
+9
+UpdateAt
+datetime
+
+
+
+
+Table 2.19. GroupPhoto
+2.2.20 GroupPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GroupPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserId
+uniqueidentifier
+
+x
+FK
+
+3
+GroupStatusId
+uniqueidentifier
+
+x
+FK
+
+4
+GroupPhotoId
+uniqueidentifier
+
+
+FK
+
+5
+GroupVideoId
+uniqueidentifier
+
+
+FK
+
+6
+Content
+text
+
+
+
+
+7
+GroupPostNumber
+varchar(50)
+
+
+
+
+8
+IsHide
+bit
+
+
+
+
+9
+NumberPost
+int
+
+
+
+
+10
+CreateAt
+datetime
+
+
+
+
+11
+UpdateAt
+datetime
+
+
+
+
+Table 2.20. GroupPost
+2.2.21 GroupPostPhoto
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GroupPostPhotoId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupPostId
+uniqueidentifier
+
+x
+FK
+
+3
+GroupPhotoId
+uniqueidentifier
+
+x
+FK
+
+4
+GroupPhotoId
+uniqueidentifier
+
+x
+FK
+
+5
+PostPosition
+int
+
+
+
+
+6
+Content
+text
+
+
+
+
+7
+GroupPostPhotoNumber
+varchar(50)
+
+
+
+
+8
+IsHide
+bit
+
+
+
+
+9
+CreateAt
+datetime
+
+
+
+
+10
+UpdateAt
+datetime
+
+
+
+
+Table 2.21. GroupPostPhoto
+2.2.22 GroupPostVideo
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GroupPostVideoId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupPostId
+uniqueidentifier
+
+x
+FK
+
+3
+GroupVideoId
+uniqueidentifier
+
+x
+FK
+
+4
+GroupVideoId
+uniqueidentifier
+
+x
+FK
+
+5
+PostPosition
+int
+
+
+
+
+6
+Content
+text
+
+
+
+
+7
+GroupPostPhotoNumber
+varchar(50)
+
+
+
+
+8
+IsHide
+bit
+
+
+
+
+9
+CreateAt
+datetime
+
+
+
+
+10
+UpdateAt
+datetime
+
+
+
+
+Table 2.22. GroupPostVideo
+2.2.23 GroupRole
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GroupRoleId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupRoleName
+varchar(100)
+
+x
+
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdatedAt
+datetime
+
+
+
+
+Table 2.23. GroupRole
+2.2.24 GroupSetting
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GroupSettingId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupSettingName
+varchar(100)
+
+x
+
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdatedAt
+datetime
+
+
+
+
+Table 2.24. GroupSetting
+2.2.25 GroupSettingUse
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GroupSettingId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupId
+uniqueidentifier
+
+x
+FK
+
+3
+GroupStatusId
+uniqueidentifier
+
+x
+FK
+
+4
+CreatedAt
+datetime
+
+
+
+
+5
+UpdatedAt
+datetime
+
+
+
+
+Table 2.25. GroupSettingUse
+2.2.26 GroupSharePost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GroupSharePostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserId
+uniqueidentifier
+
+x
+FK
+
+3
+UserPostId
+uniqueidentifier
+
+
+
+
+4
+UserPostVideoId
+uniqueidentifier
+
+
+
+
+5
+UserPostPhotoId
+uniqueidentifier
+
+
+
+
+6
+GroupPostId
+uniqueidentifier
+
+
+
+
+7
+GroupPostPhotoId
+uniqueidentifier
+
+
+
+
+8
+GroupPostVideoId
+uniqueidentifier
+
+
+
+
+9
+SharedToUserId
+uniqueidentifier
+
+
+
+
+10
+Content
+text
+
+
+
+
+11
+CreatedAt
+datetime
+
+
+
+
+Table 2.26. GroupSharePost
+2.2.27 GroupSettingUse
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GroupStatusId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupStatusName
+varchar(100)
+
+x
+FK
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdatedAt
+datetime
+
+
+
+
+Table 2.27. GroupSettingUse
+2.2.28 GroupTag
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+TagId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+TagName
+varchar(255)
+
+x
+FK
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdatedAt
+datetime
+
+
+
+
+Table 2.28. GroupTag
+2.2.29 GroupTagUsed
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+TagId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupId
+uniqueidentifier
+
+x
+PK
+
+3
+UserStatusId
+uniqueidentifier 
+
+x
+FK
+
+4
+CreatedAt
+datetime
+
+
+
+
+5
+UpdatedAt
+datetime
+
+
+
+
+Table 2.29. GroupTagUsed
+2.2.30 GroupType
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GroupTypeId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupTypeName
+varchar(100)
+
+x
+FK
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdatedAt
+datetime
+
+
+
+
+Table 2.30. GroupType
+2.2.31 GroupVideo
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GroupVideoId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupId
+uniqueidentifier
+
+x
+FK
+
+3
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+4
+VideoUrl
+varchar(1000)
+
+x
+
+
+5
+GroupVideoNumber
+varchar(50)
+
+
+
+
+6
+CreatedAt
+datetime
+
+
+
+
+7
+UpdatedAt
+datetime
+
+
+
+
+Table 2.31. GroupVideo
+2.2.32 Interest
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+InterestId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+InterestName
+varchar(100)
+
+x
+
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdatedAt
+datetime
+
+
+
+
+Table 2.32. Interest
+2.2.33 LookingFor
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+LookingForId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+LookingForName
+varchar(1000)
+
+x
+
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdatedAt
+datetime
+
+
+
+
+Table 2.33. LookingFor
+2.2.34 Notifications
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+NotificationId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserId
+uniqueidentifier
+
+x
+FK
+
+3
+SenderId
+uniqueidentifier
+
+x
+FK
+
+4
+NotificationTypeId
+uniqueidentifier
+
+x
+FK
+
+5
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+6
+NotiMessage
+varchar(255)
+
+
+
+
+7
+IsRead
+bit
+
+
+
+
+8
+CreatedAt
+datetime
+
+
+
+
+Table 2.34. Notifications
+2.2.35 NotificationType
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+NotificationTypeId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+NotificationTypeName
+varchar(100)
+
+x
+
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdatedAt
+datetime
+
+
+
+
+Table 2.35. NotificationType
+
+2.2.36 Photo
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+PhotoId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserId
+uniqueidentifier
+
+x
+FK
+
+3
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+4
+PhotoUrl
+varchar(1000)
+
+x
+
+
+5
+PhotoBigUrl
+varchar(1000)
+
+
+
+
+6
+PhotoSmallUrl
+varchar(1000)
+
+
+
+
+7
+PhotoNumber
+varchar(50)
+
+
+
+
+8
+CreatedAt
+datetime
+
+
+
+
+9
+UpdatedAt
+datetime
+
+
+
+
+Table 2.36. Photo
+2.2.37 ReactComment
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactCommentId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserPostId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+5
+CommentId
+uniqueidentifier
+
+x
+FK
+
+6
+CreatedAt
+datetime
+
+
+
+
+Table 2.37. ReactComment
+2.2.38 ReactGroupSharePost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactGroupSharePostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupSharePostId
+uniqueidentifier
+
+x
+FK
+
+3
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+4
+UserId
+uniqueidentifier
+
+x
+FK
+
+5
+CreatedDate
+datetime
+
+
+
+
+Table 2.38. ReactGroupSharePost
+2.2.39 ReactGroupCommentPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactGroupCommentPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupPostId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+5
+CommentGroupPostId
+uniqueidentifier
+
+x
+FK
+
+6
+CreatedAt
+datetime
+
+
+
+
+Table 2.39. ReactGroupCommentPost
+2.2.40 ReactGroupPhotoPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactGroupPhotoPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupPostPhotoId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+5
+CreatedAt
+datetime
+
+
+
+
+Table 2.40. ReactGroupPhotoPost
+2.2.41 ReactGroupPhotoPostComment
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactPhotoPostCommentId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupPostPhotoId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+5
+CommentPhotoGroupPostId
+uniqueidentifier
+
+x
+FK
+
+6
+CreatedAt
+datetime
+
+
+
+
+Table 2.41. ReactGroupPhotoPostComment
+2.2.42 ReactGroupPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactGroupPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupPostId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+5
+CreatedAt
+datetime
+
+
+
+
+Table 2.42. ReactGroupPost
+2.2.43 ReactGroupVideoPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactGroupVideoPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupPostVideoId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+5
+CreatedAt
+datetime
+
+
+
+
+Table 2.43. ReactGroupVideoPost
+2.2.44 ReactGroupVideoPostComment
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactGroupVideoCommentId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupPostVideoId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+5
+CommentGroupVideoPostId
+uniqueidentifier
+
+x
+FK
+
+6
+CreatedAt
+datetime
+
+
+
+
+Table 2.44. ReactGroupVideoPostComment
+
+2.2.45 ReactPhotoPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactPhotoPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserPostPhotoId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+5
+CreatedAt
+datetime
+
+
+
+
+Table 2.45. ReactPhotoPost
+2.2.46 ReactPhotoPostComment
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactPhotoPostCommentId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserPostPhotoId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+5
+CommentPhotoPostId
+uniqueidentifier
+
+x
+FK
+
+6
+CreatedAt
+datetime
+
+
+
+
+Table 2.46. ReactPhotoPostComment
+2.2.47 ReactPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserPostId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+5
+CreatedAt
+datetime
+
+
+
+
+Table 2.47. ReactPost
+2.2.48 ReactType
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactTypeId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+ReactTypeName
+nvarchar(100)
+
+x
+
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdateAt
+datetime
+
+
+
+
+Table 2.48. ReactType
+
+2.2.49 ReactSharePostComment
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactSharePosCommentId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+SharePostId
+uniqueidentifier
+
+x
+FK
+
+3
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+4
+UserId
+uniqueidentifier
+
+x
+FK
+
+5
+CommentSharePostId
+uniqueidentifier
+
+x
+FK
+
+6
+CreatedDate
+datetime
+
+
+
+
+Table 2.49. ReactSharePostComment
+
+2.2.50 ReactVideoPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactVideoPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserPostVideoId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+5
+CreatedAt
+datetime
+
+
+
+
+Table 2.50. ReactVideoPost
+
+2.2.51 ReactVideoPostComment
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReactVideoPostCommentId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserPostVideoId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+ReactTypeId
+uniqueidentifier
+
+x
+FK
+
+5
+CommentVideoPostId
+uniqueidentifier
+
+x
+FK
+
+6
+CreatedAt
+datetime
+
+
+
+
+Table 2.51. ReactVideoPostComment
+2.2.52 Relationship
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+RelationshipId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+RelationshipName
+varchar(100)
+
+x
+FK
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdateAt
+datetime
+
+
+
+
+Table 2.52. Relationship
+2.2.53 ReportComment
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReportCommentId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+ReportTypeId
+uniqueidentifier
+
+x
+FK
+
+3
+CommentId
+uniqueidentifier
+
+x
+FK
+
+4
+CommentPhotoPostId
+uniqueidentifier
+
+x
+FK
+
+5
+CommentVideoPostId
+uniqueidentifier
+
+x
+FK
+
+6
+CommentGroupPostId
+uniqueidentifier
+
+x
+FK
+
+7
+CommentPhotoGroupPostId
+uniqueidentifier
+
+x
+FK
+
+8
+CommentGroupVideoPostId
+uniqueidentifier
+
+x
+FK
+
+9
+ReportById
+uniqueidentifier
+
+x
+FK
+
+10
+Content
+text
+
+
+
+
+11
+ReportStatus
+bit
+
+
+
+
+12
+CreatedAt
+datetime
+
+
+
+
+Table 2.53. ReportComment
+2.2.54 CommentSharePost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+CommentSharePostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+SharePostId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+ParentCommentId
+uniqueidentifier
+
+
+
+
+5
+Content
+ntext
+
+
+
+
+6
+ListNumber
+varchar(100)
+
+
+
+
+7
+LevelCmt
+int
+
+
+
+
+8
+IsHide
+bit
+
+
+
+
+9
+IsBanned
+bit
+
+
+
+
+10
+CreatedAt
+datetime
+
+
+
+
+Table 2.54. CommentSharePost
+2.2.55 ReportPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReportPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+ReportTypeId
+uniqueidentifier
+
+x
+FK
+
+3
+GroupPostId
+uniqueidentifier
+
+x
+FK
+
+4
+UserPostId
+uniqueidentifier
+
+x
+FK
+
+5
+ReportById
+uniqueidentifier
+
+x
+FK
+
+6
+ReportStatus
+bit
+
+
+
+
+7
+CreatedAt
+datetime
+
+
+
+
+Table 2.55. ReportPost
+2.2.56 ReportProfile
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReportProfileId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+ReportTypeId
+uniqueidentifier
+
+x
+FK
+
+3
+GroupId
+uniqueidentifier
+
+x
+FK
+
+4
+UserId
+uniqueidentifier
+
+x
+FK
+
+5
+ReportById
+uniqueidentifier
+
+x
+FK
+
+6
+ReportStatus
+bit
+
+
+
+
+7
+CreatedAt
+datetime
+
+
+
+
+Table 2.56. ReportProfile
+2.2.57 ReportType
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReportTypeId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+ReportTypeName
+nvarchar(100)
+
+x
+
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdateAt
+datetime
+
+
+
+
+Table 2.57. ReportType
+2.2.58 ReportProfile
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+ReportTypeId
+uniqueidentifier
+
+x
+FK
+
+2
+UserChatId
+uniqueidentifier
+
+x
+FK
+
+3
+ReportById
+uniqueidentifier
+
+x
+FK
+
+4
+ReportStatus
+bit
+
+
+
+
+5
+CreatedAt
+datetime
+
+
+
+
+Table 2.58. ReportProfile
+2.2.59 Role
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+RoleId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+NameRole
+nvarchar(100)
+
+x
+
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdateAt
+datetime
+
+
+
+
+Table 2.59. Role
+2.2.60 Setting
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+SettingId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+SettingName
+nvarchar(100)
+
+x
+
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdateAt
+datetime
+
+
+
+
+Table 2.60. Setting
+2.2.61 SharePost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+SharePostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserId
+uniqueidentifier
+
+x
+FK
+
+3
+UserPostId
+uniqueidentifier
+
+
+FK
+
+4
+UserPostVideoId
+uniqueidentifier
+
+
+FK
+
+5
+UserPostPhotoId
+uniqueidentifier
+
+
+FK
+
+6
+GroupPostId
+uniqueidentifier
+
+
+FK
+
+7
+GroupPostPhotoId
+uniqueidentifier
+
+
+FK
+
+8
+GroupPostVideoId
+uniqueidentifier
+
+
+FK
+
+9
+SharedToUserId
+uniqueidentifier
+
+
+FK
+
+10
+Content
+text
+
+
+
+
+11
+CreatedAt
+datetime
+
+
+
+
+Table 2.61. SharePost
+2.2.62 UserChat
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+UserChatId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserId
+uniqueidentifier
+
+x
+FK
+
+2
+NameChat
+nvarchar(300)
+
+x
+
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdateAt
+datetime
+
+
+
+
+Table 2.62. UserChat
+2.2.63 UserChatMessage
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+UserChatMessageId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserChatId
+uniqueidentifier
+
+x
+FK
+
+3
+FromUserId
+uniqueidentifier
+
+x
+FK
+
+4
+MessageChat
+text
+
+x
+
+
+5
+IsPin
+bit
+
+
+
+
+6
+IsHide
+bit
+
+
+
+
+7
+CreatedAt
+datetime
+
+
+
+
+Table 2.63. UserChatMessage
+2.2.64 UserChatWithUser
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+UserChatWithUserId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserChatId
+uniqueidentifier
+
+x
+FK
+
+3
+WithUserId
+uniqueidentifier
+
+x
+FK
+
+4
+CreatedAt
+datetime
+
+
+
+
+Table 2.64. UserChatWithUser
+2.2.65 UserGender
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+UserGenderId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GenderId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+5
+CreatedAt
+datetime
+
+
+
+
+6
+UpdateAt
+datetime
+
+
+
+
+Table 2.65. UserGender
+2.2.66 UserInterest
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+UserInterestId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+InterestId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+5
+CreatedAt
+datetime
+
+
+
+
+6
+UpdateAt
+datetime
+
+
+
+
+Table 2.66. UserInterest
+2.2.67 UserLookingFor
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+LookingForId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserId
+uniqueidentifier
+
+x
+FK
+
+3
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+4
+CreatedAt
+datetime
+
+
+
+
+5
+UpdateAt
+datetime
+
+
+
+
+Table 2.67. UserLookingFor
+2.2.68 UserPost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+UserPostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserId
+uniqueidentifier
+
+x
+FK
+
+3
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+4
+PhotoId
+uniqueidentifier
+
+
+FK
+
+5
+VideoId
+uniqueidentifier
+
+
+FK
+
+6
+Content
+text
+
+
+
+
+7
+UserPostNumber
+varchar(50)
+
+
+
+
+8
+IsAvataPost
+bit
+
+
+
+
+9
+IsCoverPhotoPost
+bit
+
+
+
+
+10
+IsHide
+bit
+
+
+
+
+11
+NumberPost
+int
+
+
+
+
+12
+CreatedAt
+datetime
+
+
+
+
+13
+UpdateAt
+datetime
+
+
+
+
+Table 2.68. UserPost
+2.2.69 UserPostPhoto
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+UserPostPhotoId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserPostId
+uniqueidentifier
+
+x
+FK
+
+3
+PhotoId
+uniqueidentifier
+
+x
+FK
+
+4
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+5
+Content
+text
+
+
+
+
+6
+UserPostPhotoNumber
+varchar(50)
+
+
+
+
+7
+IsHide
+bit
+
+
+
+
+8
+PostPosition
+int
+
+
+
+
+9
+CreatedAt
+datetime
+
+
+
+
+10
+UpdateAt
+datetime
+
+
+
+
+Table 2.69. UserPostPhoto
+2.2.70 UserPostVideo
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+UserPostVideoId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserPostId
+uniqueidentifier
+
+x
+FK
+
+3
+VideoId
+uniqueidentifier
+
+x
+FK
+
+4
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+5
+Content
+text
+
+
+
+
+6
+UserPostVideoNumber
+varchar(50)
+
+
+
+
+7
+IsHide
+bit
+
+
+
+
+8
+PostPosition
+int
+
+
+
+
+9
+CreatedAt
+datetime
+
+
+
+
+10
+UpdateAt
+datetime
+
+
+
+
+Table 2.70. UserPostVideo
+2.2.71 UserProfile
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+UserId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+RoleId
+uniqueidentifier
+
+x
+FK
+
+3
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+4
+FirstName
+nvarchar(100)
+
+x
+
+
+5
+LastName
+nvarchar(100)
+
+x
+
+
+6
+Email
+varchar(255)
+
+
+
+
+7
+FeId
+varchar(255)
+
+
+
+
+8
+BirthDay
+date
+
+x
+
+
+9
+AboutMe
+nvarchar(1000)
+
+
+
+
+10
+HomeTown
+nvarchar(500)
+
+
+
+
+11
+CoverImage
+varchar(1000)
+
+
+
+
+12
+UserNumber
+varchar(50)
+
+
+
+
+13
+IsFirstTimeLogin
+bit
+
+x
+
+
+14
+IsActive
+bit
+
+x
+
+
+15
+CreatedAt
+datetime
+
+
+
+
+16
+UpdateAt
+datetime
+
+
+
+
+Table 2.71. UserProfile
+2.2.72 UserRelationship
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+UserRelationshipId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+RelationshipId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+5
+CreatedAt
+datetime
+
+
+
+
+6
+UpdateAt
+datetime
+
+
+
+
+Table 2.72. UserRelationship
+2.2.73 UserSetting
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+UserSettingId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+SettingId
+uniqueidentifier
+
+x
+FK
+
+3
+UserId
+uniqueidentifier
+
+x
+FK
+
+4
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+Table 2.73. UserSetting
+2.2.74 UserStatus
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+UserStatusId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+StatusName
+varchar(100)
+
+x
+
+
+3
+CreatedAt
+datetime
+
+
+
+
+4
+UpdateAt
+datetime
+
+
+
+
+Table 2.74. UserStatus
+2.2.75 Video
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+VideoId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserId
+uniqueidentifier
+
+x
+FK
+
+3
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+4
+VideoUrl
+varchar(1000)
+
+x
+
+
+5
+VideoNumber
+varchar(50)
+
+
+
+
+6
+CreatedAt
+datetime
+
+
+
+
+7
+UpdateAt
+datetime
+
+
+
+
+Table 2.75. Video
+
+2.2.76 CommentGroupSharePost
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+CommentGroupSharePostId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserId
+uniqueidentifier
+
+x
+FK
+
+3
+GroupSharePostId
+uniqueidentifier
+
+x
+FK
+
+4
+ParentCommentId
+uniqueidentifier
+
+
+
+
+5
+Content
+ntext
+
+x
+
+
+6
+ListNumber
+varchar(100)
+
+
+
+
+7
+LevelCmt
+int
+
+
+
+
+8
+IsHide
+bit
+
+
+
+
+9
+CreatedAt
+datetime
+
+
+
+
+10
+IsBanned
+bit
+
+
+
+
+Table 2.76. CommentGroupSharePost
+2.2.77 WorkPlace
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+WorkPlaceId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+UserId
+uniqueidentifier
+
+x
+FK
+
+3
+UserStatusId
+uniqueidentifier
+
+x
+FK
+
+4
+WorkPlaceName
+varchar(200)
+
+x
+
+
+5
+CreatedAt
+datetime
+
+
+
+
+6
+UpdateAt
+datetime
+
+
+
+
+Table 2.77. WorkPlace
+2.2.78 GroupPostReactCount
+
+#
+Field Name
+Type
+Unique
+Not Null
+PK/FK
+Note
+1
+GroupPostReactCountId
+uniqueidentifier
+x
+x
+PK
+ 
+2
+GroupPostId
+uniqueidentifier
+
+x
+FK
+
+3
+GroupPostPhotoId
+uniqueidentifier
+
+x
+FK
+
+4
+GroupPostVideoId
+uniqueidentifier
+
+x
+FK
+
+5
+ReactCount
+int
+
+
+
+
+6
+CommentCount
+int
+
+
+
+
+7
+ShareCount
+int
+
+
+
+
+Table 2.78. GroupPostReactCount
+
+
+
+
+
+3. Detailed Design
+3.1 Class Diagram
+	**FUSP have about 205 main class
+	URL: Link_Class_Diagram
+3.1.1  User Profile
+
+Figure 4.3.1. Class Diagram of  User Profile 
+3.1.2 Admin Manage User Profile
+
+FIgure 4.3.2 Manage User Profile
+
+3.1.3 User Relationship
+
+Figure 4.3.3 Class Diagram of User Relationship  
+3.1.4 User React
+
+4.3.4. Class Diagram of User React 
+3.1.5 Group Post
+
+4.3.5.Class Diagram of Group Post
+3.1.6. User Post
+4.3.6. Class Diagram of User Post
+3.1.7.  Manage Group
+
+4.3.7. Class Diagram of Manage Group
+3.1.8  Manage Report
+
+4.3.8. Class Diagram of Manage Report
+3.1.9 Search
+
+3.1.10 Chat
+
+
+4.3.10. Class Diagram of Chat
+
+
+3.2  Sequence Diagram
+       **FUSP have 137 Sequence Diagram
+       URL: Link_Sequence_Diagram
+3.2.1 Login FEID
+
+Figure 4.3.1. Login FEID sequence diagram
+
+3.2.2  First Login (Add Required Profile)
+
+Figure 4.3.2. First Login (Add Required Profile) sequence diagram
+
+3.2.3 View user profile
+
+Figure 4.3.3. View user profile sequence diagram
+3.2.4 View other user profile
+
+Figure 4.3.4. View other user profile sequence diagram
+3.2.5 View list friend of current login user
+
+Figure 4.3.5. View list friend of current login user sequence diagram
+3.2.6 View list friend of other user
+
+Figure 4.3.6. View list friend of other user sequence diagram
+3.2.7 Update User Profile
+
+Figure 4.3.7. Update User Profile sequence diagram
+3.2.8 Get All Friend Request
+
+Figure 4.3.8. Get All Friend Request sequence diagram
+3.2.9 Suggestion Friend
+
+Figure 4.3.9. Suggestion Friend sequence diagram
+3.2.10 Suggestion Group
+
+Figure 4.3.10. Suggestion Group sequence diagram
+3.2.11 Get Invated Join To Group (List group invite)
+
+Figure 4.3.11.Get Invated Join To Group (List group invite) sequence diagram
+3.2.12 Invated To Join Group Status (Accept/Delete)
+
+Figure 4.3.12. Invated To Join Group Status (Accept/Delete) sequence diagram
+3.2.13 Block User Profile
+
+Figure 4.3.13.Block User Profile sequence diagram
+3.2.14 Get List User Is Blocked
+
+Figure 4.3.14. Get List User Is Blocked sequence diagram
+3.2.15 Cancel User Profile (List user blocked)
+
+Figure 4.3.15. Cancel User Profile (List user blocked) sequence diagram
+3.2.16 Get Button Send Message (hide if status is private)
+
+Figure 4.3.16. Get Button Send Message (hide if status is private) sequence diagram
+3.2.17 Get Image By UserId
+
+Figure 4.3.17. Get Image By UserId sequence diagram
+3.2.18 Get Video By UserId
+
+Figure 4.3.18. Get Video By UserId sequence diagram
+3.2.19 List Gender Entities
+
+Figure 4.3.19. List Gender Entities sequence diagram
+3.2.20 List Gender Entities
+
+Figure 4.3.20. List Gender Entities sequence diagram
+3.2.21 List Gender Entities
+
+Figure 4.3.21. List Gender Entities sequence diagram
+3.2.22 List Interest Entities
+
+Figure 4.3.22. List Interest Entities sequence diagram
+3.2.23 List Web Affilication Entities
+
+Figure 4.3.23. List Web Affilication Entities sequence diagram
+3.2.24 List Status Entities
+
+Figure 4.3.24. List Status Entities sequence diagram
+3.2.25 List UserSetting Entities
+Figure 4.3.25. List UserSetting Entities sequence diagram
+3.2.26 List Setting Entities
+
+Figure 4.3.26. List Setting Entities sequence diagram
+3.2.27 Create Gender Entities
+
+Figure 4.3.27.Create Gender Entities sequence diagram
+3.2.28 Create Contact for Entities
+
+Figure 4.3.28. Create Contact for Entities sequence diagram
+3.2.29 Create Status Entities
+
+Figure 4.3.29.Create Status Entities sequence diagram
+3.2.30 Create Relationship Entities
+
+Figure 4.3.30. Create Relationship Entities sequence diagram
+3.2.31 Create Setting Entities
+
+Figure 4.3.31. Create Setting Entities sequence diagram
+3.2.32 Create Role Entities
+
+Figure 4.3.32.  Create Role Entities sequence diagram
+3.2.33 Create Interest Entities
+
+Figure 4.3.33. Create Interest Entities sequence diagram
+3.2.34 Send/Accept/Cancel/Reject Friend Request
+
+Figure 4.3.34. Send/Accept/Cancel/Reject Friend Request sequence diagram
+3.2.35 View Relationship Status
+
+Figure 4.3.35. View Relationship Status sequence diagram
+3.2.36 View Setting Status
+
+Figure 4.3.36. View Setting Status sequence diagram
+3.2.37 Create New Reaction Entity(Admin)
+
+Figure 4.3.37. Create New Reaction Entity(Admin) sequence diagram
+3.2.38 Create React Post
+
+Figure 4.3.38. Create React Post sequence diagram
+3.2.39 Create React Photo Post
+
+Figure 4.3.39. Create React Photo Post sequence diagram
+3.2.40 Create React Video Post
+
+Figure 4.3.40. Create React Video Post sequence diagram
+3.2.41 Create React Comment User Post
+
+Figure 4.3.41. Create React Comment User Post sequence diagram
+3.2.42 Create React Comment User Video Post
+
+Figure 4.3.42. Create React Comment User Video Post sequence diagram
+3.2.43 Create React Comment User Photo Post
+
+Figure 4.3.43. Create React Comment User Photo Post sequence diagram
+3.2.44 Get All React Type
+
+Figure 4.3.44. Get All React Type sequence diagram
+3.2.45 Get All React By Post Id
+
+Figure 4.3.45. Get All React By Post Id sequence diagram
+3.2.46 Get All React By Photo Post Id
+
+Figure 4.3.46. Get All React By Photo Post Id sequence diagram
+3.2.47 Get All React By Video Post Id
+
+Figure 4.3.47. Get All React By Video Post Id sequence diagram
+3.2.48 Get All React By Comment Id
+
+Figure 4.3.48. Get All React By Comment Id sequence diagram
+3.2.49 Get All React By Comment Photo Id
+
+Figure 4.3.49. Get All React By Comment Photo Id sequence diagram
+3.2.50 Get All React By Comment Video Id
+
+Figure 4.3.50. Get All React By Comment Video Id sequence diagram
+3.2.51 Get User Post By User Id (Wall)
+
+Figure 4.3.51. Get User Post By User Id (Wall) sequence diagram
+3.2.52 Get Post (News Feed)
+
+Figure 4.3.52. Get Post (News Feed) sequence diagram
+3.2.53 Create Post
+
+Figure 4.3.53. Create Post sequence diagram
+3.2.54 Create Comment
+
+Figure 4.3.54. Create Comment sequence diagram
+3.2.55 Get Comment
+
+Figure 4.3.55. Get Comment sequence diagram
+3.2.56 Create Video Comment
+
+Figure 4.3.56.Create Video Comment sequence diagram
+3.2.57 Get Video Comment
+
+Figure 4.3.57. Get Video Comment sequence diagram
+3.2.58 Create Photo Comment
+
+Figure 4.3.58. Create Photo Comment sequence diagram
+3.2.59 Get Photo Comment
+
+Figure 4.3.59. Get Photo Comment sequence diagram
+3.2.60 Update User Post
+
+Figure 4.3.60. Update User Post sequence diagram
+3.2.61 Get User Post By Id ((Other User Wall))
+
+Figure 4.3.61. Get User Post By Id ((Other User Wall)) sequence diagram
+3.2.62 Share Post
+
+Figure 4.3.62. Share Post sequence diagram
+3.2.63 Get Child Post By Id
+
+Figure 4.3.63. Get Child Post By Id sequence diagram
+3.2.64  Update User Comment Post
+
+Figure 4.3.64. Update User Comment Post sequence diagram
+3.2.65 Update User Comment Photo Post
+
+Figure 4.3.65. Update User Comment Photo Post sequence diagram
+3.2.66 Update User Comment Video Post
+
+Figure 4.3.66. Update User Comment Video Post sequence diagram
+3.2.67 Update User Comment Video Post
+
+Figure 4.3.67. Update User Comment Video Post sequence diagram
+3.2.68 Delete User Post
+
+Figure 4.3.68. Delete User Post sequence diagram
+3.2.69 Delete Comment User Post
+
+Figure 4.3.69. Delete Comment User Post sequence diagram
+3.2.70 Get Other User Post By UserId (Other User Wall)
+
+Figure 4.3.70. Get Other User Post By UserId (Other User Wall) sequence diagram
+3.2.71 Get Banned Post By UserId
+
+Figure 4.3.71. Get Banned Post By UserId sequence diagram
+3.2.72 Get Share Post By Id
+
+Figure 4.3.72. Get Share Post By Id sequence diagram
+3.2.73 Get Group Post By Group Id
+
+Figure 4.3.73. Get Group Post By Group Id sequence diagram
+3.2.74 Get Group Post By Group Post Id (Admin Get Post  Is Reported)
+
+Figure 4.3.74. Get Group Post By Group Post Id (Admin Get Post  Is Reported) sequence diagram
+3.2.75 Create Group Post
+
+Figure 4.3.75. Create Group Post sequence diagram
+3.2.76 Create Group Post Comment
+
+Figure 4.3.76. Create Group Post Comment sequence diagram
+3.2.77 Get Group Post Comment
+
+Figure 4.3.77. Get Group Post Comment sequence diagram
+
+3.2.78 Create Group Video Comment
+
+Figure 4.3.78. Create Group Video Comment sequence diagram
+3.2.79 Get Group Video Post Comment
+
+Figure 4.3.79. Get Group Video Post Comment sequence diagram
+
+3.2.80 Create Group Photo Comment
+
+Figure 4.3.80. Create Group Photo Comment sequence diagram
+3.2.81 Create Group Share Post Comment
+
+Figure 4.3.81. Create Group Share Post Comment sequence diagram
+
+3.2.82 Get Group Photo Post Comment
+
+Figure 4.3.82. Get Group Photo Post Comment sequence diagram
+3.2.83 Get Group Share Post Comment
+
+Figure 4.3.83. Get Group Share Post Comment sequence diagram
+3.2.84 Update Group Post
+
+Figure 4.3.84. Update Group Post sequence diagram
+3.2.85 Update Group Photo Post
+
+Figure 4.3.85. Update Group Photo Post sequence diagram
+3.2.86 Update Group Video Post
+
+Figure 4.3.86. Update Group Video Post sequence diagram
+3.2.87 Update Group Share Post
+
+Figure 4.3.87. Update Group Share Post sequence diagram
+3.2.88 Share Group Post
+
+Figure 4.3.88. Share Group Post sequence diagram
+3.2.89 Get Child Group Post
+
+Figure 4.3.89. Get Child Group Post sequence diagram
+3.2.90 Update Group Post
+
+Figure 4.3.90. Update Group Post sequence diagram
+3.2.91 Update Group Comment Video Post
+
+Figure 4.3.91. Update Group Comment Video Post sequence diagram
+3.2.92 Update Group Comment Photo Post
+
+Figure 4.3.92. Update Group Comment Photo Post sequence diagram
+3.2.93 Update Group Comment Share Post
+
+Figure 4.3.93. Update Group Comment Share Post sequence diagram
+3.2.94 Delete Group Post
+
+Figure 4.3.94. Delete Group Post sequence diagram
+3.2.95 Delete Comment Group Post
+
+Figure 4.3.95. Delete Comment Group Post sequence diagram
+3.2.96 Create Group
+
+Figure 4.3.96. Create Group sequence diagram
+3.2.97 Get Group By User Id (Get List Group Of User)
+
+Figure 4.3.97. Get Group By User Id (Get List Group Of User) sequence diagram
+3.2.98 Request Join To Group
+
+Figure 4.3.98. Request Join To Group sequence diagram
+3.2.99 Get Request Join Group
+
+Figure 4.3.99. Get Request Join Group sequence diagram
+3.2.100 Member Join Status
+
+Figure 4.3.100. Member Join Status sequence diagram
+3.2.101 Invited Friend To Join
+
+Figure 4.3.101. Invited Friend To Join sequence diagram
+3.2.102 Cancel Request Join Group
+
+Figure 4.3.102.Cancel Request Join Group sequence diagram
+3.2.103 Left The Group
+
+Figure 4.3.103. Left The Group sequence diagram
+3.2.104 Get List Friend To Invite
+
+Figure 4.3.104. Get List Friend To Invite sequence diagram
+3.2.105 Get Group Setting By Id
+
+Figure 4.3.105. Get Group Setting By Id sequence diagram
+3.2.106 UpdateGroupSetting (Group Admin)
+
+Figure 4.3.106. UpdateGroupSetting (Group Admin) sequence diagram
+3.2.107 Get List Member With Member Role (Get Member List For Group Admin)
+
+Figure 4.3.107. Get List Member With Member Role (Get Member List For Group Admin) sequence diagram
+3.2.108 Update Or Remove Member (Group Admin)
+
+Figure 4.3.108. Update Or Remove Member (Group Admin) sequence diagram
+3.2.109 Update Group Information (Group Admin)
+
+Figure 4.3.109. Update Group Information (Group Admin) sequence diagram
+3.2.110 DeleteGroup (Group Admin)
+
+Figure 4.3.110. DeleteGroup (Group Admin) sequence diagram
+3.2.111 Get List Member In Group
+
+Figure 4.3.111. Get List Member In Group sequence diagram
+3.2.112 Get Image In Group
+
+Figure 4.3.112. Get Image In Group sequence diagram
+3.2.113 Get Video In Group
+
+Figure 4.3.113. Get Video In Group sequence diagram
+3.2.114 Create Report Type (Admin)
+
+Figure 4.3.114. Create Report Type (Admin) sequence diagram
+3.2.115 Get Report Type
+
+Figure 4.3.115.Get Report Type sequence diagram
+3.2.116 Create Report Comment
+
+Figure 4.3.116. Create Report Comment sequence diagram
+3.2.117 Create Report Post
+
+Figure 4.3.117. Create Report Post sequence diagram
+3.2.118 Create Report Profile
+
+Figure 4.3.118. Create Report Profile sequence diagram
+3.2.119 Get Report User (All report user)
+
+Figure 4.3.119. Get Report User (All report user) sequence diagram
+3.2.120 Get Report Group (All report group)
+
+Figure 4.3.120. Get Report Group (All report group) sequence diagram
+3.2.121 Get Report List (All report  post)
+
+Figure 4.3.121. Get Report Group (All report group) sequence diagram
+3.2.122 Get Report Comment (All report comment)
+
+Figure 4.3.122. Get Report Comment (All report comment) sequence diagram
+3.2.123 Get List Report User (All report user detail)
+
+Figure 4.3.123. Get List Report User (All report user detail) sequence diagram
+3.2.124 Get List Report Group (All report group detail)
+
+Figure 4.3.124. Get List Report Group (All report group detail) sequence diagram
+3.2.125 Get List Report Post (All report post detail)
+
+Figure 4.3.125. Get List Report Post (All report post detail) sequence diagram
+3.2.126 Get List Report Comment (All report Comment detail)
+
+Figure 4.3.126. Get List Report Comment (All report Comment detail) sequence diagram
+3.2.127 Process Report
+
+Figure 4.3.127. Process Report sequence diagram
+3.2.128 Create User Chat (Actually: chatbox)
+
+Figure 4.3.128. Create User Chat (Actually: chatbox) sequence diagram
+3.2.129 Create User Chat Box (Actually: userchat) 
+
+Figure 4.3.129. Create User Chat Box (Actually: userchat)  sequence diagram
+3.2.130 Update User Chat Box
+
+Figure 4.3.130. Update User Chat Box sequence diagram
+3.2.131 Get Chat Details By Id
+
+Figure 4.3.131. Get Chat Details By Id sequence diagram
+3.2.132 Get User In Chat
+
+Figure 4.3.132. Get User In Chat sequence diagram
+3.2.133 Get Group By Group Id (Search friend in profile)
+
+Figure 4.3.133. Get Group By Group Id (Search friend in profile) sequence diagram
+3.2.134 Get Info By Content (Search All)
+
+Figure 4.3.134.Get Info By Content (Search All) sequence diagram
+3.2.135 Search User By Name (Search in group to invite)
+
+Figure 4.3.135. Search User By Name (Search in group to invite) sequence diagram
+3.2.136 Search Group By Group Name
+
+Figure 4.3.136. Search Group By Group Name sequence diagram
+
+3.2.137 Search Group Post
+
+Figure 4.3.137. Search Group Post sequence diagram
+
+
+
+V. Software Testing Documentation
+1. Scope of Testing
+1.1. Testing Objective
+    1.1.1. Functional Testing
+- Team members focus on the functions of the actor to be tested and executed.
+    1.1.2. Non-Functional Testing
+-          Usability:
+●        Reducing the number of user actions to interact with the screen enhances the system's user-friendliness.
+●        Verify errors during interactions and provide on-screen feedback messages for users.
+-          Security:
+●        The user account is authorized, allowing access to features corresponding to their role.
+-          Maintainability:
+●        The source code structure is intentionally organized to facilitate maintenance and extensibility.
+1.2. Testing Scope
+            	Scope of testing the FPT eLIS include:
+-          Features: Check each feature of the FUSP application
+-    Bug types and severities: List functional, content, visual, usability error types by low, medium, high severity.
+-          Requested devices: Using multi devices such as laptop, pc, etc.. to check responsive
+
+2. Test Strategy
+      In the FUSP project, the Iterative Incremental Testing approach is employed to effectively manage the frequent changes in customer requirements. This approach allows for the software to be developed and tested in small, manageable increments. Each iteration delivers a part of the system that is functional and tested, enabling early detection of issues and ensuring that the development remains aligned with customer expectations.
+      
+      
+      This iterative process is particularly beneficial when dealing with evolving requirements, as it provides the flexibility to incorporate feedback and make adjustments after each cycle. The close collaboration between the development team and the customer ensures that any issues or bugs identified during testing can be promptly addressed. This continuous testing and development cycle not only enhances the quality of the software but also accelerates the delivery of a final product that meets the customer's needs.
+      By following the Iterative Incremental Testing approach, the FUSP project can effectively respond to changes, minimize risks, and ensure that the final software product is both robust and closely aligned with the customer's vision.
+2.1 Testing Types
+
+       The different types of testing that will be carried out this project are:
+● Functional Testing: We execute functional testing to test functions and check
+       if each function is correct or not.
+● GUI Testing: We execute user interface testing, including some features such
+       as colour, spell, background, component, and resolution of screen
+● API Testing: We execute API testing to test the API of back-end services and
+       check if the data the Front-end service receive is true or not 
+
+2.2 Test Levels
+
+Type of Tests
+Test Level
+
+Unit
+Integration
+System
+Functional Test
+X
+X
+X
+GUI Test
+
+X
+X
+API Test
+X
+X
+
+2.3 Supporting Tools
+
+Purpose
+Tool
+Vendor/In-house
+Version
+API Testing
+Postman, Swagger
+Vendor
+ 
+Unit Testing
+XUnit (Visual Studio)
+Vendor
+ 
+UI/UX Testing
+Chrome, Microsoft Edge
+Vendor
+ 
+Integration Testing
+Chrome, Microsoft Edge
+Vendor
+ 
+Manage defects log, test cases
+Google Sheets
+Vendor
+ 
+Manage issues
+Google Sheets
+Vendor
+ 
+3. Test Plan
+3.1 Human Resources
+
+Worker/Doer
+Role
+Specific Responsibilities/Comments
+HoanNK
+PM, Test Leader, Developer
+  ● Create test plan 
+  ● Execute IT test 
+SonNH
+Developer, 
+Test Member
+   ● Execute IT test 
+QuanNA
+Techlead, 
+Test Member
+   ● Execute IT test 
+  ● Create test report 
+  ● Fix bug
+HoanLH
+Developer, 
+Test Member
+   ● Execute IT test 
+  ● Create test report 
+  ● Fix bug
+AnhBQ
+Documentation,
+Test Member
+   ● Execute IT test 
+  ● Create test report 
+3.2 Test Environment
+
+Purpose
+Tool
+Provider
+Version
+Build test environment
+● Visual Studio
+  Microsoft
+Community 2022 (64-bit) - Version 17.10.5
+  
+Test API
+● Postman
+● Swagger
+
+  Postman
+    Microsoft
+  10.24.1
+3.3 Test Milestones
+
+Milestone Task
+Start Date
+End Date
+Iteration 3
+Unit Testing
+  25/06/2024
+  27/06/2024
+Integration Testing
+  27/06/2024
+  29/06/2024
+Iteration 4
+Unit Testing
+  09/07/2024
+  11/07/2024
+Integration Testing
+  12/07/2024
+  14/07/2024
+Iteration 5
+Unit Testing
+  24/07/2024
+  26/07/2024
+Integration Testing
+  27/07/2024
+  29/07/2024
+Iteration 6
+Unit Testing
+  08/08/2024
+  10/08/2024
+Integration Testing
+  11/08/2024
+  13/08/2024
+System Testing
+  11/08/2024
+  13/08/2024
+Iteration 7
+Unit Testing
+  14/08/2024
+  16/08/2024
+Integration Testing
+  17/08/2024
+  19/08/2024
+System Testing
+  17/08/2024
+  19/08/2024
+4. Test Cases
+
+FUSP Test Cases
+Unit Test
+Report5_Unit Test.xlsx
+Integration Test
+Report5_Integration Test Report.xlsx
+System Test
+Report5_System Test Report
+5. Test Reports
+5.1 Unit Test
+
+Figure 5.1.1: Unit Test Statistic
+
+
+5.2 Integration Test
+
+
+Figure 5.2.1: Integration Test Statistic
+
+Figure 5.2.2: Integration Test Case Sample
+
+5.3 System Test
+
+
+Figure 5.3.1: System Test Statistic
+
+
+Figure 5.3.2: System Test Case Sample
+
+5.4 SecurityTest
+      5.4.1 Using Technologies:
+a. Zaproxy:
+	
+       ZAP (Zed Attack Proxy), commonly known as ZAP or OWASP ZAP, is an open-source security tool developed by the OWASP (Open Web Application Security Project) Foundation. It is widely used for penetration testing and identifying vulnerabilities in web applications. ZAP is popular for both beginners and seasoned security professionals due to its user-friendly interface and powerful features.
+       
+b. Aikido Security:
+
+      5.4.2. Security Reports:
+a. Zaproxy:
+URL: Zap_Report
+
+
+
+
+b. Aikido Security:
+
+
+
+VI. Release Package & User Guides
+1. Deliverable Package1. Deliverable Package
+ #
+Deliverable Item
+Description
+Type
+Version
+1
+Web Module
+(FUSP) WebApplication
+New
+1.0.0
+2
+Web API Module
+FUSP.API
+New
+1.0.0
+Database
+1
+
+Initialize Database
+FUSP.Script
+New
+1.0.0
+Documents
+1
+Project Introduction
+Report1_Project Introduction.docx
+
+
+2
+Project Management Plan
+Report2_Project Management Plan.docx
+
+
+3
+Software Requirement Specification
+Report3_Software Requirement Specification.docx
+
+
+4
+Software Design Document
+
+Report4_Software Design Document.docx
+
+
+5
+Test Documentation
+Report5_Test Documentation.docx
+Test_Report folder
+
+
+6
+Software User Guides
+Report6_Software User Guides.docx
+
+
+7
+Final Project Report
+Report7_Final Project Report.docx
+
+
+2. Installation Guides
+2.1 System Requirements
+2.1.1 Hardware requirements
+PC
+Minimum
+Recommended
+Internet connection
+Cable, Wi-fi (4 Mbps)
+Cable, Wi-fi (8 Mbps)
+Processor
+Intel Core i5 1.4Ghz
+Intel Core i7 2.5Ghz
+Memory
+4GB RAM
+8GB RAM
+Storage
+HDD 100GB
+SSD 200GB
+Table 6.2.1.1. Hardware Requirements
+2.1.2 Software requirements
+Component
+Name and Version
+Description
+Operating System
+Windows 10/11
+Operating system for building application
+DBMS
+SQL Server 2022
+Used to manage database
+.NET
+.NET SDK 6.0.9 or above ,.NET Core 6.0.9 Runtime
+Used to run backend server
+ReactJS
+V20.2.0 or above
+Used to run frontend application
+IDE
+Visual Studio, Visual Studio Code
+Used to run code
+Table 6.2.1.2. Software Requirements
+2.2 Installation Instruction
+2.2.1 .NET 6 - Setup Development Environment
+2.2.1.1 Download and Install Visual Studio 2022
+Visual Studio 2022 is a free code editor that runs on Windows, Mac and Linux.
+a. Download
+Download Visual Studio 2022 from https://visualstudio.microsoft.com/downloads/.
+
+Figure 6.2.1. Download and Install Visual Studio(Download)
+
+b. Install
+Install the Visual Studio 2022  by opening the downloaded installer and following the prompts.
+
+Figure 6.2.2. Install Visual Studio 2022
+
+
+
+Figure 3. Install Visual Studio 2022
+
+
+Figure 4. Install Visual Studio 2022
+
+
+
+c. Test
+Launch VS Code to test that it is installed correctly.
+
+Figure 5. Install Visual Studio 2022
+
+
+
+2.2.2 React - Setup Development Environment
+2.2.2.1 Install Node.js and npm
+● Node.js and npm are the runtime and command line tools required to build and run React applications.
+● Node.js is a javascript runtime environment that enables you to run js code outside of a browser, and npm is a package manager used to download javascript packages built to run on Node. They come bundled together when you install Node.js.
+● React is built on top of Node.js and the React library itself is a package available on npm - https://www.npmjs.com/package/react.
+a. Download
+Download Node.js and npm from https://nodejs.org.
+
+Figure 6. Install Node.js and npm(Download)
+b. Install
+ 
+Figure 7. Install Node.js and npm(Install )
+
+ 
+Figure8. Install Node.js and npm(Install)
+ 
+Figure 9. Install Node.js and npm(Install)
+ 
+Figure 10. Install Node.js and npm(Install)
+ Figure 11. Install Node.js and npm(Install)
+ 
+ Figure 12. Install Node.js and npm(Install)
+ 
+Figure13. Install Node.js and npm(Install)
+c. Test
+Test that Node.js and npm were installed successfully by running the commands node -v and npm -v.
+Figure 14. Install Node.js and npm(Test)
+2.2.2.2 Install Yarn
+● Yarn is a package manager that doubles down as project manager. 
+● Yarn is an established open-source package manager used to manage dependencies in JavaScript projects. It assists with the process of installing, updating, configuring, and removing packages dependencies, eventually helping you reach your objectives faster with fewer distractions.
+● Resource Domain: https://yarnpkg.com/ 
+a. Download
+- We can install Yarn through the npm package manager, which comes bundled with Node.js when you install it on your system.
+b. Install
+run this command in terminal after Install Success npm : npm install --global yarn
+
+Figure 6.2.2.17. Install Global Yarn(Install)
+c. Test
+Test that yarn was installed successfully by running the command: yarn --version
+
+Figure 6.2.2.18. Install Node.js and npm(Install)
+
+2.2.2.3 Install the Git CLI
+The Git CLI is the command line interface used for cloning and interacting with git repositories (e.g. projects on GitHub). For more info see https://git-scm.com/book.
+a. Download
+Download the Git CLI from https://git-scm.com/downloads.
+
+Figure 6.2.2.19. Install the Git CLI(Download)
+b. Install
+Install the Git CLI by opening the downloaded installer and following the prompts.
+ 
+Figure 6.2.2.20. Install the Git CLI(Install)
+ 
+Figure 6.2.2.21. Install the Git CLI(Install) 
+Figure 6.2.2.22. Install the Git CLI(Install) 
+Figure 6.2.2.23. Install the Git CLI(Install) 
+Figure 6.2.2.24. Install the Git CLI(Install) 
+Figure 6.2.2.25. Install the Git CLI(Install)
+Figure 6.2.2.26. Install the Git CLI(Install)  
+Figure 6.2.2.27. Install the Git CLI(Install)  
+Figure 6.2.2.28. Install the Git CLI(Install) 
+ 
+Figure 6.2.2.29. Install the Git CLI(Install) 
+
+Figure 6.2.2.30. Install the Git CLI(Install) 
+Figure 6.2.2.31. Install the Git CLI(Install) 
+c. Test
+Test that the Git CLI was installed successfully by running the command git --version.
+
+
+Figure 6.2.2.32. Install the Git CLI(Install)
+2.2.2.4 Install Visual Studio Code (VS Code)
+VS Code is a free code editor that runs on Windows, Mac and Linux.
+a. Download
+Download VS Code from https://code.visualstudio.com/.
+
+Figure 6.2.2.33. Install Visual Studio Code (VS Code)
+b. Install
+Install Visual Studio Code by opening the downloaded setup file and following the prompts. 
+Figure 6.2.2.34. Install Visual Studio Code (VS Code)
+ 
+Figure 6.2.2.35. Install Visual Studio Code (VS Code)
+ 
+Figure 6.2.2.36. Install Visual Studio Code (VS Code)
+ 
+Figure 6.2.2.37. Install Visual Studio Code (VS Code)
+ 
+Figure 6.2.2.38. Install Visual Studio Code (VS Code)
+
+Figure 6.2.2.39. Install Visual Studio Code (VS Code)
+c. Test
+Launch VS Code to test that it is installed correctly.
+Figure 6.2.2.40. Install Visual Studio Code (VS Code)
+2.2.3.Install database
+2.2.3.1 Install SQL Server 2022
+SQL Server is a relational database management system (RDBMS) developed by Microsoft.
+a. Download
+Download SQL Server 2022 from https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+b. Install
+Install SQL Server 2022 by opening the downloaded setup file and following the prompts.
+
+Figure : Install SQL Server 2022
+
+Figure : Install SQL Server 2022
+
+Figure : Install SQL Server 2022
+c. Test
+Launch VS Code to test that it is installed correctly.
+
+Figure: Install SQL Server 2022 successfully
+
+2.2.3.2 Install SQL Server Management Studio 20
+SQL Server Management Studio (SSMS) 2022 is a powerful and convenient database management tool developed by Microsoft
+a. Download
+Download SQL Server Management Studio 20 from https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms
+
+Figure :  Download SQL Server Management Studio (SSMS)
+b. Install
+
+Figure L Install SQL Server Management Studio 20 (SSMS)
+
+c. Test
+
+
+
+
+3. User Manual
+3.1 Authentication
+
+
+Welcome to FPTU Sociéte Project (FUSP)! This guide will walk you through the steps to login and access the system.
+Before you continue with the authentication procedure, you need to check whether you have a valid SSO FPT account? If not, contact the related staff to get an account for yourself.
+3.1.1 Login 
+1. Access landing page
+
+
+2. Access the login page from the landing page by clicking on the "Sign in to your account" button.
+3. Enter your account credentials in the provided fields. 
+
+4. Click on the "Login" button to proceed to authentication.
+5. If your credentials are correct and you check for authentication, you will be logged in successfully. After that, whenever you access our website again, we still keep you logged in.
+
+3.1.3 Logout
+1. Locate the user icon on the navigation bar and click on it. 
+
+2. A dropdown list will appear. From the options provided, select "Logout."
+3. Upon selecting "Logout," the system will initiate the logout process.
+4. You will be automatically redirected to the landing page of FUSP
+
+3.2 My Profile
+
+
+3.2.1 View post of user
+Here is how to view your profile:
+1. Locate the user icon on the navigation bar and click on it
+
+2. Scroll down and see your post
+
+3.2.2 View basic information
+Here, you can view your profile information
+1. Locate the user icon on the navigation bar and click on it
+
+2. Click "ABOUT" button on navigation bar
+
+3.2.3 View friends list
+Here, you can view your profile information
+1. Click "FRIENDS" button on navigation bar
+
+
+3.2.4 View photos list
+Here, you can view your photos of user
+1. Locate the user icon on the navigation bar and click on it
+
+2. Click "PHOTOS" button on navigation bar
+	
+
+3.2.5 View videos list
+Here, you can view your videos of user
+1. Locate the user icon on the navigation bar and click on it
+
+2. Click "VIDEOS" button on navigation bar
+
+3.2.6 User settings
+1. Click Icon of user on the right side of header
+
+2. Choose Setting, you can change setting of user profile on there
+
+
+3.3 Posting function
+3.3.1 Create post
+Learn how to create post 
+
+1. After logging into FUSP, click "What's on your mind" on header
+
+2. Fill information you want to post
+
+3. Click "Post"
+
+
+3.3.2 Update post
+Learn how to update post
+
+1. Click on the three dots button in the right corner of the post and choose "Edit post"
+
+2. Click Add new photos/videos if you want to add photos/videos or Edit all to delete photos/video you want
+
+3.  Click "Save"
+3.3.3 Delete post
+Learn how to delete your post
+
+1. Click on the three dots button in the right corner of the post and choose "Remove post"
+
+2. Click delete
+
+.
+3.3.4 Comment on post
+Learn how to comment on the post
+
+1. Click on Comment
+
+2. Write your comment
+
+3. Click icon send
+
+3.3.5 React on post
+Learn how to react 
+
+1. Click React type you want on the bottom left 
+
+3.3.6 React on comment
+Learn how react on comment
+1. Click React type you want on the bottom left 
+
+3.3.7 Share post
+Learn how to share the post
+1. Click button "Share" on the bottom right
+
+2. Fill in the information you want and choose where your share, your feed or your group
+
+3. Click "Post"
+3.4 Manage group
+
+3.4.1 Create group
+Learn how to create group
+
+1. Click "Group" on the left menu
+
+2. Click "Create New Group" on the left menu
+
+3. Fill required information
+
+4. Click "Create" button
+3.4.2 Invite member
+Learn how to invite member
+
+1. Click "INVITE" button on header of group
+
+2. Search friend on search box and choose who you want to invite
+
+3. Click button "SEND INVITES"
+3.4.3 Manage member join request
+Learn how to manage member on group
+
+1. Click Icon on the left group
+
+2. Click member join requests 
+
+3. You can accept or decline member join requests
+
+
+3.4.4 Manage pending post
+Learn how to manage pending post
+1. Click Icon on the left group
+
+2. Click "Pending post"
+
+3. You can approve or decline post
+
+3.4.5 Manage member
+Learn how to manage member
+
+1. Click Icon on the left group
+
+2. Click "Member manager"
+
+3. You can kick or promote user
+
+
+3.4.6 Manage group settings
+
+Learn how to setting group
+1. Click Icon on the left group
+
+2. Click Setting and choose Group Settings
+
+3. Update information you want and save
+
+
+
+
+3.5 Homepage
+3.5.1 Searching
+How to search on page
+1. Click "Search" box on navbar
+
+2. Input what you want to search and press Enter
+	
+3. Choose type of search on left menu to see result of search function
+● Optiom "All"
+
+● Optiom "Post"
+
+● Optiom "User"
+
+● Optiom "Group"
+
+
+
+
+3.5.2 Message
+3.5.2.1. Chatting with with old friend
+How to message with each other
+1. Click icon Message on the header
+
+2. Click User you want to chat with
+
+3. Message box appear and you can chatting on this
+
+
+3.5.2.2. Chatting with with new friend
+1. Click Icon Expand on the header of chat box
+
+2. Click Search use on the left menu
+
+3. Input name of user you want to chat with
+
+4. Choose user and input message on pop-up box
+
+5. Click "SEND" to send message, new message was created
+
+
+
+3.5.3 Talking with AI
+How to talk with AI 
+1. Click Toad mentor on left menu
+
+2. Chatting with him
+
+3.6 Report
+3.6.1 Report post
+1. Click on the three dots button in the right corner of the post and click "Report"
+
+2. Choose type of report, it will auto send to admin
+
+3.6.2 Report comment
+1. Click three dots on the right side of comment and click Report
+	
+2. Choose type of report and it will auto send for admin
+
+
+3.6.3 Report user
+1. Click three dots on the right side of user you want to report
+
+2. Choose type of report and it will auto send for admin
+
+3.6.4 Report group 
+1. Click three dots on the right side of group you want to report
+
+2. Choose type of report and it will auto send for admin
+
+
+3.7 Admin
+3.7.1 Manage Report User
+Learn how to manage user
+1. Click three stick on the left of header
+
+2. Click Report Manager and choose User Report
+
+3. Click on user who was reported
+
+4. Click on "HANDLE REPORT"
+
+5. Choose option case by case 
+
+
+3.7.2 Manage group report
+Learn how to manage group report
+1. Click three stick on the left of header
+
+
+2. Click Report Manager and choose Group Report
+
+
+3. Click on user who was reported
+
+4. Click on "HANDLE REPORT"
+
+
+5. Choose option case by case 
+
+3.7.3 Manage post report
+1. Click three stick on the left of header
+
+2. Click Report Manager and choose Post Report
+	
+3. Click on post who was reported
+
+
+
+4. Click on "HANDLE REPORT"
+
+
+5. Choose option case by case 
+
+3.7.4 Manage comment report
+1. Click three stick on the left of header
+
+
+2. Click Report Manager and choose Comment Report
+
+
+3. Click on user who was reported
+
+
+4. Click on "HANDLE REPORT"
+
+
+
+
+5. Choose option case by case
+
+
+
+
+
+
+
+1
+
